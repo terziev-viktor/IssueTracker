@@ -1,0 +1,33 @@
+<div class="frm-container">
+<form class="frm">
+    <fieldset class="form-group">
+        <label for="InputUsername">Username</label>
+        <input type="text" class="form-control" id="InputUsername" placeholder="Enter username" ng-model="userLogin.name">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="InputPassword1">Password</label>
+        <input type="password" class="form-control" id="InputPassword1" placeholder="Password" ng-model="userLogin.password">
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="loginUser(userLogin)">Login</button>
+</form>
+<form class="frm">
+    <fieldset class="form-group">
+        <label for="InputUsernameReg">Username</label>
+        <input type="text" class="form-control" id="InputUsernameReg" placeholder="Enter username" ng-model="userReg.name">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="InputEmail1">Email address</label>
+        <input type="email" class="form-control" id="InputEmail1" placeholder="Enter email" ng-model="userReg.email">
+        <small class="text-muted">We'll never share your email with anyone else.</small>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="InputPassword1Reg">Password</label>
+        <input type="password" class="form-control" id="InputPassword1Reg" placeholder="Password" ng-model="userReg.password">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="InputPassword1Confirm">Confirm Password</label>
+        <input type="password" class="form-control" id="InputPassword1Confirm" placeholder="Confirm Password" ng-model="userReg.confirmPassword">
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="registerUser(userReg)">Login</button>
+</form>
+</div>

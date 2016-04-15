@@ -3,7 +3,12 @@
   width: 50%;
   margin: 0 auto;
 }
-.frm {
-  width: 50%;
+.frm-container {
+  width: 70%;
   margin: 0 auto;
+}
+.frm {
+  width: 45%;
+  margin: 2%;
+  display: inline-block;
 }

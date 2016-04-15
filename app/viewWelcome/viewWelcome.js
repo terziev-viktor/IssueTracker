@@ -5,10 +5,20 @@ angular.module('myApp.welcome', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/welcome', {
     templateUrl: 'viewWelcome/viewWelcome.html',
-    controller: 'View1Ctrl'
+    controller: 'welcomeCtrl'
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('welcomeCtrl', ['$scope', function($scope) {
+  $scope.registerUser = function (userData) {
+    // TODO: Register User
+    console.log('in $scope.registerUser ');
+    console.log(userData);
+  };
 
+  $scope.loginUser = function (userData) {
+    // TODO: Login User
+    console.log('in $scope.loginUser');
+    console.log(userData.name);
+  }
 }]);
