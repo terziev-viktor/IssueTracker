@@ -1,0 +1,23 @@
+<form class="frm-container">
+    <fieldset class="form-group">
+        <label for="title">Name</label>
+        <input type="text" class="form-control" id="title" placeholder="Issue Title" ng-model="project.name">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="2" ng-model="project.description"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="project">Project Key</label>
+        <input type="text" class="form-control" id="project" placeholder="Project Key" ng-model="project.key">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="leadId">Lead ID</label>
+        <input type="text" class="form-control" id="leadId" placeholder="Lead ID" ng-model="project.leadId">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="priorityId">Priorities (separated by comma)</label>
+        <input type="text" class="form-control" id="priorityId" placeholder="Low, Medium, High" ng-model="project.priority">
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="addProject(project)">Add Issue</button>
+</form>

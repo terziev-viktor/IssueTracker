@@ -3,16 +3,16 @@
 angular.module('IssueTracker.addIssue', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/addIssue', {
+        $routeProvider.when('/projects/:id/add-issue', {
             templateUrl: 'viewAddIssue/viewAddIssue.html',
-            controller: 'AddIssueCtrl'
+            controller: 'addIssueCtrl'
         });
     }])
 
-    .controller('AddIssueCtrl', ['$scope', function($scope) {
-        $scope.addIssue = function (issueData) {
+    .controller('addIssueCtrl', ['$scope', '$routeProvider', function($scope, $routeProvider) {
+        $scope.addProject = function (project) {
             // TODO: Add Issue
             console.log('in $scope.addIssue ');
-            console.dir(issueData);
+            console.dir(project);
         };
     }]);
