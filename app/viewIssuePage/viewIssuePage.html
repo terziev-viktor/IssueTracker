@@ -1,0 +1,35 @@
+<form class="frm-container">
+    <fieldset class="form-group">
+        <label for="title">Title</label>
+        <input disabled type="text" class="form-control" id="title" placeholder="Issue Title" ng-model="issue.title">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="description">Description</label>
+        <textarea disabled class="form-control" id="description" rows="3" ng-model="issue.description"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="project">Project</label>
+        <input disabled type="text" class="form-control" id="project" placeholder="Project name" ng-model="issue.projectName">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="assigneeId">Assigneeid</label>
+        <input disabled type="text" class="form-control" id="assigneeId" placeholder="Assignee ID" ng-model="issue.assigneeId">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="priorityId">Priority ID</label>
+        <select class="form-control" id="priorityId" ng-model="issue.priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="duedate">Due Date</label>
+        <input type="datetime" class="form-control" id="duedate" ng-model="issue.dueDate">
+    </fieldset>
+    <p>Author: {{author}}</p>
+    <p>Project: {{project}}</p>
+    <p>Status: {{status}}</p>
+    <p>Labels: {{labels}}</p> <!-- Labels as string separated by comma -->
+    <button type="submit" class="btn btn-primary" ng-click="addIssue(issue)">Add Issue</button>
+</form>
