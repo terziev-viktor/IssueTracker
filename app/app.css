@@ -8,7 +8,11 @@
   margin: 0 auto;
 }
 .frm {
+  display: inline-block;
   width: 45%;
   margin: 2%;
-  display: inline-block;
+}
+#login-frm {
+  position: relative;
+  top: 0;
 }
