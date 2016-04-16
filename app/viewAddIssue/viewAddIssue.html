@@ -1,0 +1,31 @@
+<form class="frm-container">
+    <fieldset class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Issue Title" ng-model="issueData.title">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" ng-model="issueData.description"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="project">Project</label>
+        <input type="text" class="form-control" id="project" placeholder="Project name" ng-model="issueData.projectName">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="assigneeId">Assigneeid</label>
+        <input type="text" class="form-control" id="assigneeId" placeholder="Assignee ID" ng-model="issueData.assigneeId">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="priorityId">Priority ID</label>
+        <select class="form-control" id="priorityId" ng-model="issueData.priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="duedate">Due Date</label>
+        <input type="datetime" class="form-control" id="duedate" ng-model="issueData.dueDate">
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="addIssue(issueData)">Add Issue</button>
+</form>
