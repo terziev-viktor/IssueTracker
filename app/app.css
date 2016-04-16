@@ -15,6 +15,10 @@
 .navbar {
   margin-bottom: 0;
 }
+#dashboard-table {
+  width: 40%;
+  float: right;
+}
 #login-frm {
   position: relative;
   top: 0;

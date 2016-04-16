@@ -9,5 +9,5 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
     }])
 
     .controller('DashboardCtrl', ['$http', '$scope', function ($http, $scope) {
-        
+
     }]);

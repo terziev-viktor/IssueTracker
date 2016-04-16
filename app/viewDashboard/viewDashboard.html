@@ -1,4 +1,10 @@
-<table class="table-responsive">
+<h1>Dashboard</h1>
+<h2>Affiliated Projects</h2>
+{{projects}}
+<a href="#">{{project}}</a><br>
+{{/projects}}
+
+<table class="table-responsive" id="dashboard-table">
     <thead>
     <tr>
         <th>Title</th>
@@ -10,9 +16,9 @@
     <tbody>
     {{issues}}
     <tr>
-        <td>{{title}}</td>
+        <td><a href="#">{{title}}</a></td>
         <td>{{description}}</td>
-        <td>{{project}}</td>
+        <td><a href="#">{{project}}</a></td>
         <td>{{duedate}}</td>
     </tr>
     {{/issues}}
