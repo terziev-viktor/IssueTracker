@@ -10,6 +10,7 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
 }])
 
 .controller('welcomeCtrl', ['$scope', 'authentication', function($scope, authentication) {
+  $("#page-title>p").html('Welcome to Issue Tracker! Login or Register to get started.');
   $scope.registerUser = function (userData) {
     authentication.register(userData);
   };
