@@ -40,9 +40,21 @@ angular.module('IssueTracker.users.authentication', [])
             return def.promise;
         }
 
+        function getToken(data) {
+            var def = $q.defer();
+            $http.post(BASE_URL + '/api/Token', data)
+                .then(function (response) {
+                    def.resolve(response);
+                }, function (error) {
+                    def.reject(error);
+                });
+            return def.promise;
+        }
+
         return {
             login: login,
             register: register,
-            logout: logout
+            logout: logout,
+            getToken: getToken
         }
     }]);
