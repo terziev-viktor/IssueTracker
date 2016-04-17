@@ -8,6 +8,6 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', function ($http, $scope) {
-
+    .controller('DashboardCtrl', ['$http', '$scope', '$location', function ($http, $scope, $location) {
+        
     }]);
