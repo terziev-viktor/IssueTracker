@@ -9,7 +9,8 @@ angular.module('IssueTracker', [
   'IssueTracker.addProject',
   'IssueTracker.issuePage',
   'IssueTracker.dashboard',
-  'IssueTracker.users.authentication'
+  'IssueTracker.users.authentication',
+  'IssueTracker.projects'
 ]).
   config(['$routeProvider', function($routeProvider, $http) {
     $routeProvider.otherwise({redirectTo: '/welcome'});
