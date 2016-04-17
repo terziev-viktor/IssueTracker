@@ -8,8 +8,10 @@ angular.module('IssueTracker', [
   'IssueTracker.addIssue',
   'IssueTracker.addProject',
   'IssueTracker.issuePage',
-  'IssueTracker.dashboard'
+  'IssueTracker.dashboard',
+  'IssueTracker.users.authentication'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/welcome'});
-}]);
+  config(['$routeProvider', function($routeProvider, $http) {
+    $routeProvider.otherwise({redirectTo: '/welcome'});
+  }])
+    .constant('BASE_URL', '): ⦁	http://softuni-issue-tracker.azurewebsites.net');

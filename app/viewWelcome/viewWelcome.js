@@ -9,16 +9,12 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
   });
 }])
 
-.controller('welcomeCtrl', ['$scope', function($scope) {
+.controller('welcomeCtrl', ['$scope', 'authentication', function($scope, authentication) {
   $scope.registerUser = function (userData) {
-    // TODO: Register User
-    console.log('in $scope.registerUser ');
-    console.log(userData);
+    authentication.register(userData);
   };
 
   $scope.loginUser = function (userData) {
-    // TODO: Login User
-    console.log('in $scope.loginUser');
-    console.log(userData.name);
+    authentication.login(userData);
   }
 }]);
