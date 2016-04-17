@@ -9,6 +9,7 @@
 }
 .frm {
   display: inline-block;
+  float: left;
   width: 45%;
   margin: 2%;
 }
