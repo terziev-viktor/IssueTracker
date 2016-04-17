@@ -15,7 +15,7 @@ angular.module('IssueTracker.issues', [])
         // Security logged In
         function getIssueById(id) {
             var def = $q.defer();
-            $http.get(BASE_URL + '/api/Issues/' + id).then(function (success) {
+            $http.get(BASE_URL + '/Issues/' + id).then(function (success) {
                 def.resolve(success);
             }, function(error) {
                 def.reject(error)
@@ -25,7 +25,7 @@ angular.module('IssueTracker.issues', [])
         //	Security: Admin, Project lead
         function addIssue(data) {
             var def = $q.defer();
-            $http.post(BASE_URL + '/api/Issues', data).then(function (success) {
+            $http.post(BASE_URL + '/Issues', data).then(function (success) {
                 def.resolve(success);
             }, function(error) {
                 def.reject(error)
@@ -35,7 +35,7 @@ angular.module('IssueTracker.issues', [])
         // Security: Admin, Project lead
         function editIssue(issueId, data) {
             var def = $q.defer();
-            $http.put(BASE_URL + '/api/Issues/' + issueId, data)
+            $http.put(BASE_URL + '/Issues/' + issueId, data)
                 .then(function (success) {
                     def.resolve(success);
                 }, function(error) {
@@ -46,7 +46,7 @@ angular.module('IssueTracker.issues', [])
         // Security: Login
         function getIssueComments(issueId) {
             var def = $q.defer();
-            $http.get(BASE_URL + '/api/Issues/' + issueId + '/comments').then(function (response) {
+            $http.get(BASE_URL + '/Issues/' + issueId + '/comments').then(function (response) {
                 def.resolve(response);
             }, function (error) {
                 def.reject(error);
@@ -56,7 +56,7 @@ angular.module('IssueTracker.issues', [])
         // Security: Logged in user who is either a project leader or has a assigned issue in this project
         function addIssueComment(issueId, data) {
             var def = $q.defer();
-            $http.put(BASE_URL + '/api/Issues/' + issueId + '/comments', data).then(function (response) {
+            $http.put(BASE_URL + '/Issues/' + issueId + '/comments', data).then(function (response) {
                 def.resolve(response);
             }, function (error) {
                 def.reject(error);
