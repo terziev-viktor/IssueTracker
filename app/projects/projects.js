@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('IssueTracker.projects', [])
-    .factory('getProjects', ['$http', '$q', 'BASE_URL', function ($http, $q, BASE_URL) {
+    .factory('projects', ['$http', '$q', 'BASE_URL', function ($http, $q, BASE_URL) {
         function getAllProjects() {
             var def = $q.defer();
             $http.get(BASE_URL + '/api/Projects').then(function (response) {
