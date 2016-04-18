@@ -18,4 +18,4 @@ angular.module('IssueTracker', [
   config(['$routeProvider', function($routeProvider, $http) {
     $routeProvider.otherwise({redirectTo: '/welcome'});
   }])
-    .constant('BASE_URL', '): ⦁	http://softuni-issue-tracker.azurewebsites.net');
+    .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net');

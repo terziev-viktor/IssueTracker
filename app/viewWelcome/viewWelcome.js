@@ -9,23 +9,34 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
   });
 }])
 
-.controller('welcomeCtrl', ['$scope', 'authentication', '$location', function($scope, authentication, $location) {
+.controller('welcomeCtrl', ['$scope', 'authentication', '$location', '$q', '$http', 'BASE_URL', function($scope, authentication, $location, $q, $http, BASE_URL) {
   $("#page-title>p").html('Welcome to Issue Tracker! Login or Register to get started.');
   $scope.registerUser = function (userData) {
-    authentication.register(userData).then(function (success) {
-      $location.path('/dashboard');
+    authentication.register(JSON.stringify(userData)).then(function (success) {
+      console.log(success);
+      $scope.loginUser({"Username": userData.Email, "Password": userData.Password})
+          .then(function (success) {
+            sessionStorage['access_token'] = success.access_token;
+            $location.path('/dashboard');
+          });
     }, function (error) {
-      // TODO: Make a useful message
+      // TODO: Make a useful message.
       console.log(error);
     });
   };
 
   $scope.loginUser = function (userData) {
-    authentication.login(userData).then(function (seccess) {
-      $location.path('/dashboard');
-    }, function (error) {
-      // TODO: Make a useful message
-      console.log(error);
-    });
+    var defer = $q.defer();
+    userData['grant_type'] = "password";
+    authentication.getToken(JSON.stringify(userData))
+        .then(function (success) {
+          defer.resolve(success);
+        console.log(success);
+      }, function(error) {
+          defer.reject(error);
+        console.log(error);
+      });
+
+    return defer.promise;
   }
 }]);
