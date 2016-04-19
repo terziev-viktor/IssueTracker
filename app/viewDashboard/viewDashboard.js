@@ -8,6 +8,10 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', '$location', function ($http, $scope, $location) {
-
+    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', function ($http, $scope, $location, issues) {
+        issues.getUsersIssues('DueDate', 12, 0).then(function (response) {
+            console.log(response);
+        }, function (error) {
+            console.log(error);
+        });
     }]);

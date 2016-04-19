@@ -65,7 +65,7 @@ angular.module('IssueTracker.issues', [])
         }
         function getUsersIssues(orderBy, pageSize, pageNumber) {
             var def = $q.defer();
-            $http.get(BASE_URL + 'Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
+            $http.get(BASE_URL + '/Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
                 .then(function (response) {
                 def.resolve(response);
             }, function (error) {
