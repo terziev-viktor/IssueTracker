@@ -73,6 +73,26 @@ angular.module('IssueTracker.issues', [])
             });
             return def.promise;
         }
+        function getIssuesByFilter(filter, pageSize, pageNumber) {
+            var def = $q.defer();
+            $http.get(BASE_URL + '/Issues/?pageSize={'+pageSize+'}&pageNumber={'+pageNumber+'}&' + filter)
+                .then(function (response) {
+                    def.resolve(response);
+                }, function (error) {
+                    def.reject(error);
+                });
+            return def.promise;
+        }
+        function changeIssueStatus(statusId) {
+            var def = $q.defer();
+            $http.put(BASE_URL + '/Issues/{id}/changestatus?statusid=' + statusId)
+                .then(function (response) {
+                    def.resolve(response);
+                }, function (error) {
+                    def.reject(error);
+                });
+            return def.promise;
+        }
         return {
             getProjectIssues: getProjectIssues,
             getIssueById: getIssueById,
@@ -80,6 +100,8 @@ angular.module('IssueTracker.issues', [])
             editIssue: editIssue,
             getIssueComments: getIssueComments,
             addIssueComment: addIssueComment,
-            getUsersIssues: getUsersIssues
+            getUsersIssues: getUsersIssues,
+            getIssuesByFilter: getIssuesByFilter,
+            changeIssueStatus: changeIssueStatus
         }
     }]);
