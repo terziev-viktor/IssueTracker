@@ -79,6 +79,7 @@ angular.module('IssueTracker.issues', [])
             addIssue: addIssue,
             editIssue: editIssue,
             getIssueComments: getIssueComments,
-            addIssueComment: addIssueComment
+            addIssueComment: addIssueComment,
+            getUsersIssues: getUsersIssues
         }
     }]);
