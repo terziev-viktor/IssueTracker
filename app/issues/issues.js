@@ -63,7 +63,16 @@ angular.module('IssueTracker.issues', [])
             });
             return def.promise;
         }
-
+        function getUsersIssues(orderBy, pageSize, pageNumber) {
+            var def = $q.defer();
+            $http.get(BASE_URL + 'Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
+                .then(function (response) {
+                def.resolve(response);
+            }, function (error) {
+                def.reject(error);
+            });
+            return def.promise;
+        }
         return {
             getProjectIssues: getProjectIssues,
             getIssueById: getIssueById,
