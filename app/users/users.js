@@ -40,6 +40,9 @@ angular.module('IssueTracker.users', [])
             return defer.promise;
         }
         return {
-
+            getAllUsers: getAllUsers,
+            getCurrentUser: getCurrentUser,
+            makeAdmin: makeAdmin,
+            changePassword: changePassword
         }
     }]);
