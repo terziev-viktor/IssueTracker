@@ -1,0 +1,32 @@
+<div id="projectName">
+<h1>{{projectKey}}</h1><button ng-show="show" class="btn-primary">Edit</button><button class="btn-primary">Add Issue</button>
+    <p>Project Key: {{projectKey}}</p>
+    <p>Name: {{projectTitle}}</p>
+    <p>Description: {{projectDescription}}</p>
+    <p>Lead Id: (current-id: {{currentId}})</p>
+    <p>Labels: {{labels}}</p>
+    <p>Priorities: {{prioritites}}</p>
+</div>
+
+<div id="projectIssues">
+    <table class="table-responsive" id="project-table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Assignee</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{issues}}
+        <tr>
+            <td><a href="#">{{title}}</a></td>
+            <td>{{description}}</td>
+            <td>{{duedate}}</td>
+            <td>{{assignee}}</td>
+        </tr>
+        {{issues}}
+        </tbody>
+    </table>
+</div>
