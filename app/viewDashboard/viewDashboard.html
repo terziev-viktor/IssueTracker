@@ -1,8 +1,8 @@
 <h1>Dashboard</h1>
 <h2>Affiliated Projects</h2>
-{{projects}}
-<a href="#">{{project}}</a><br>
-{{projects}}
+{{proj in projects}}
+<a href="#">{{proj}}</a><br>
+{{proj in projects}}
 
 <table class="table-responsive" id="dashboard-table">
     <thead>
@@ -14,13 +14,13 @@
     </tr>
     </thead>
     <tbody>
-    {{issues}}
+    {{issue in issues}}
     <tr>
-        <td><a href="#">{{title}}</a></td>
-        <td>{{description}}</td>
-        <td><a href="#">{{project}}</a></td>
-        <td>{{duedate}}</td>
+        <td><a href="#">{{issue.title}}</a></td>
+        <td>{{issue.description}}</td>
+        <td><a href="#">{{issue.project}}</a></td>
+        <td>{{issue.duedate}}</td>
     </tr>
-    {{issues}}
+    {{issue in issues}}
     </tbody>
 </table>
