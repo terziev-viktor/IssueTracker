@@ -30,10 +30,9 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
 
   $scope.loginUser = function (userData) {
     var defer = $q.defer();
-    userData['grant_type'] = "password";
-    authentication.getToken({'Username': userData.Email, 'Password': userData.Password}).then(function (response) {
+    authentication.getToken({'Username': userData.Username, 'Password': userData.Password}).then(function (response) {
         defer.resolve(response);
-        console.log(success);
+        console.log(response);
         $location.path('/dashboard');
       }, function(error) {
           defer.reject(error);
