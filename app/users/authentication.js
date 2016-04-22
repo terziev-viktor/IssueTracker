@@ -4,7 +4,8 @@ angular.module('IssueTracker.users.authentication', [])
         var AUTHENTICATION_COOKIE_KEY = '!__Authentication_Cookie_Key__!';
 
         function preserveUserData(data) {
-            var accessToken = data.access_token;
+            console.log('access_token = ' + data.data.access_token);
+            var accessToken = data.data.access_token;
             $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
             $cookies.put(AUTHENTICATION_COOKIE_KEY, accessToken);
         }
@@ -20,16 +21,28 @@ angular.module('IssueTracker.users.authentication', [])
             return !!$cookies.get(AUTHENTICATION_COOKIE_KEY);
         }
 
+        function getToken(data) {
+            var def = $q.defer();
+            data.grant_type = 'password';
+            $http({
+                method: "POST",
+                url: BASE_URL + '/api/Token',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: $.param(data)
+            }).then(function successCallback(response) {
+                preserveUserData(response);
+                def.resolve(response)
+            }, function errorCallback(response) {
+                def.reject(response);
+            });
+            return def.promise;
+        }
+
         function login(data) {
             var def = $q.defer();
             $http.post(BASE_URL + '/api/Account/Login', data)
                 .then(function (response) {
-                    preserveUserData(response.data);
-
-                    identity.requestUserProfile()
-                        .then(function() {
-                            def.resolve(response.data);
-                        });
+                    def.resolve(response);
                 }, function (error) {
                     def.reject(error);
                 });
@@ -40,11 +53,7 @@ angular.module('IssueTracker.users.authentication', [])
             var def = $q.defer();
             $http.post(BASE_URL + '/api/Account/Register', data)
                 .then(function (response) {
-                    preserveUserData(response);
-                    identity.requestUserProfile()
-                        .then(function() {
-                            def.resolve(response.data);
-                        });
+                    def.resolve(response);
                 }, function (error) {
                     def.reject(error);
                 });
@@ -57,18 +66,6 @@ angular.module('IssueTracker.users.authentication', [])
             identity.removeUserProfile();
             $location.path('/welcome');
         }
-
-        function getToken(data) {
-            var def = $q.defer();
-            $http.post(BASE_URL + '/api/Token', data)
-                .then(function (response) {
-                    def.resolve(response);
-                }, function (error) {
-                    def.reject(error);
-                });
-            return def.promise;
-        }
-
         return {
             login: login,
             register: register,

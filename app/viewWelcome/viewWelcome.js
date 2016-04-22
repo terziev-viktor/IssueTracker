@@ -12,13 +12,16 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
 .controller('welcomeCtrl', ['$scope', 'authentication', '$location', '$q', '$http', 'BASE_URL', function($scope, authentication, $location, $q, $http, BASE_URL) {
   $("#page-title>p").html('Welcome to Issue Tracker! Login or Register to get started.');
   $scope.registerUser = function (userData) {
-    authentication.register(JSON.stringify(userData)).then(function (success) {
-      console.log(success);
-      $scope.loginUser({"Username": userData.Email, "Password": userData.Password})
-          .then(function (success) {
-            sessionStorage['access_token'] = success.access_token;
+    authentication.register(userData).then(function (response) {
+      console.log(response);
+        authentication.getToken({'Username': userData.Email, 'Password': userData.Password}).then(function (response) {
+            console.log('get token response: ');
+            console.log(response);
             $location.path('/dashboard');
-          });
+        }, function (err) {
+            console.log('get token error response');
+            console.log(err);
+        });
     }, function (error) {
       // TODO: Make a useful message.
       console.log(error);
@@ -28,10 +31,10 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
   $scope.loginUser = function (userData) {
     var defer = $q.defer();
     userData['grant_type'] = "password";
-    authentication.getToken(JSON.stringify(userData))
-        .then(function (success) {
-          defer.resolve(success);
+    authentication.getToken({'Username': userData.Email, 'Password': userData.Password}).then(function (response) {
+        defer.resolve(response);
         console.log(success);
+        $location.path('/dashboard');
       }, function(error) {
           defer.reject(error);
         console.log(error);
