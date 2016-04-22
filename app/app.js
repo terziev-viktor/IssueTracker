@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('IssueTracker', [
   'ngRoute',
+  'ngCookies',
   'IssueTracker.welcome',
   'IssueTracker.version',
   'IssueTracker.addIssue',
@@ -11,6 +12,7 @@ angular.module('IssueTracker', [
   'IssueTracker.dashboard',
   'IssueTracker.users',
   'IssueTracker.users.authentication',
+  'IssueTracker.users.identity',
   'IssueTracker.projects',
   'IssueTracker.issues'
 

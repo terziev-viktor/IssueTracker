@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('IssueTracker.issues', [])
+angular.module('IssueTracker.labels', [])
     .factory('issues', ['$http', '$q', 'BASE_URL', 'projects', function IssuesFactory($http, $q, BASE_URL, projects) {
 
         function getLabels(filter) {
@@ -14,6 +14,6 @@ angular.module('IssueTracker.issues', [])
         }
 
         return {
-
+            getLabels: getLabels
         }
     }]);
