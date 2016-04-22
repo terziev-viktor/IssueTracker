@@ -1,13 +1,35 @@
 angular.module('IssueTracker.users.authentication', [])
-    .factory('authentication', ['$http', '$q', 'BASE_URL', function ($http, $q, BASE_URL) {
+    .factory('authentication', ['$http', '$q', '$cookies', 'BASE_URL', 'identity', function ($http, $q, $cookies, BASE_URL, identity) {
+
+        var AUTHENTICATION_COOKIE_KEY = '!__Authentication_Cookie_Key__!';
+
+        function preserveUserData(data) {
+            var accessToken = data.access_token;
+            $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+            $cookies.put(AUTHENTICATION_COOKIE_KEY, accessToken);
+        }
+
+        function refreshCookie() {
+            if (isAuthenticated()) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + $cookies.get(AUTHENTICATION_COOKIE_KEY);
+                identity.requestUserProfile();
+            }
+        }
+
+        function isAuthenticated() {
+            return !!$cookies.get(AUTHENTICATION_COOKIE_KEY);
+        }
+
         function login(data) {
             var def = $q.defer();
-            //$http.defaults.headers.authorization = ''; //TODO: Set Authorization.
             $http.post(BASE_URL + '/api/Account/Login', data)
                 .then(function (response) {
-                    sessionStorage['accesstoken'] = 'access';
-                    //sessionStorage['accesstoken'] = response.accesstoken;  // TODO: Fix status code 405 and use the response object
-                    def.resolve(response);
+                    preserveUserData(response.data);
+
+                    identity.requestUserProfile()
+                        .then(function() {
+                            def.resolve(response.data);
+                        });
                 }, function (error) {
                     def.reject(error);
                 });
@@ -18,7 +40,11 @@ angular.module('IssueTracker.users.authentication', [])
             var def = $q.defer();
             $http.post(BASE_URL + '/api/Account/Register', data)
                 .then(function (response) {
-                    def.resolve(response);
+                    preserveUserData(response);
+                    identity.requestUserProfile()
+                        .then(function() {
+                            def.resolve(response.data);
+                        });
                 }, function (error) {
                     def.reject(error);
                 });
