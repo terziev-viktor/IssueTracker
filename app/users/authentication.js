@@ -52,15 +52,10 @@ angular.module('IssueTracker.users.authentication', [])
         }
 
         function logout() {
-            var def = $q.defer();
-            var data = sessionStorage['authtoken'];
-            $http.post(BASE_URL + '/api/Account/Logout', data)
-                .then(function (response) {
-                    def.resolve(response);
-                }, function (error) {
-                    def.reject(error);
-                });
-            return def.promise;
+            $cookies.remove(AUTHENTICATION_COOKIE_KEY);
+            $http.defaults.headers.common.Authorization = undefined;
+            identity.removeUserProfile();
+            $location.path('/welcome');
         }
 
         function getToken(data) {
