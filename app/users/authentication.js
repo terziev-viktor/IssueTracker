@@ -70,6 +70,7 @@ angular.module('IssueTracker.users.authentication', [])
             login: login,
             register: register,
             logout: logout,
-            getToken: getToken
+            getToken: getToken,
+            refreshCookie: refreshCookie
         }
     }]);
