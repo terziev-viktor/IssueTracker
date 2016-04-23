@@ -19,6 +19,7 @@
 #dashboard-table {
   width: 40%;
   float: right;
+  margin: 20px;
 }
 #login-frm {
   position: relative;
