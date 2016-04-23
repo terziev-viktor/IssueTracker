@@ -8,8 +8,9 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', function ($http, $scope, $location, issues, projects, identity) {
-        $('#page-title > p').html('This Is Your Dashboard');
+    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer',
+        function ($http, $scope, $location, issues, projects, identity, notificationer) {
+        notificationer.notify('Logged in successfully. Welcome to your Dashboard!');
         $('#btn-logout').show(500);
         issues.getUsersIssues('DueDate', 12, 1).then(function (response) {
             $scope.issues = response.data.Issues;
@@ -19,7 +20,9 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
         identity.getCurrentUser().then(function (response) {
             var id = response.Id;
-            projects.getProjectsByFilter('Lead.Id==' + id, 12, 1).then(function (response) {
+            console.log('get current user response:');
+            console.log(response);
+            projects.getProjectsByFilter('Lead.Username=="' + response.Username + '"', 12, 1).then(function (response) {
                 $scope.userProjects = response.data;
                 console.log(response);
             }, function (response) {

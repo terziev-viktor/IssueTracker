@@ -15,7 +15,8 @@ angular.module('IssueTracker', [
   'IssueTracker.users.identity',
   'IssueTracker.projects',
   'IssueTracker.projectPage',
-  'IssueTracker.issues'
+  'IssueTracker.issues',
+   'IssueTracker.notify'
 
 ]).
   config(['$routeProvider', function($routeProvider) {
