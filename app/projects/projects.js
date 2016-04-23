@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('IssueTracker.projects', [])
-    .factory('projects', ['$http', '$q', 'projects', 'authentication', 'BASE_URL', function ($http, $q, projects, authentication, BASE_URL) {
+    .factory('projects', ['$http', '$q', 'authentication', 'BASE_URL', function ($http, $q, authentication, BASE_URL) {
         function getAllProjects() {
             var def = $q.defer();
             authentication.refreshCookie();

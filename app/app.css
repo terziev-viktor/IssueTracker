@@ -19,7 +19,7 @@
 #dashboard-table {
   width: 40%;
   float: right;
-  margin: 20px;
+  margin: 80px 20px 20px 20px;
 }
 #login-frm {
   position: relative;
@@ -38,4 +38,9 @@
   opacity: .7;
   font-size: 1.3em;
   font-weight: bold;
+}
+#dashboard-main {
+    width: 40%;
+    float:left;
+    margin: 20px;
 }

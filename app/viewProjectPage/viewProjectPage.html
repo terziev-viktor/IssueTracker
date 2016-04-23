@@ -18,15 +18,13 @@
             <th>Assignee</th>
         </tr>
         </thead>
-        <tbody>
-        {{issues}}
+        <tbody ng-repeat="issue in issues">
         <tr>
-            <td><a href="#">{{title}}</a></td>
-            <td>{{description}}</td>
-            <td>{{duedate}}</td>
-            <td>{{assignee}}</td>
+            <td><a href="#">{{issue.Title}}</a></td>
+            <td>{{issue.Description}}</td>
+            <td><a href="#">{{issue.Project.Name}}</a></td>
+            <td>{{issue.DueDate}}</td>
         </tr>
-        {{issues}}
         </tbody>
     </table>
 </div>

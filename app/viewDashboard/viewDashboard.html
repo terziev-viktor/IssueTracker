@@ -1,9 +1,10 @@
+<div id="dashboard-main">
 <h1>Dashboard</h1>
 <h2>Affiliated Projects</h2>
 <div ng-repeat="userProject in userProjects">
-    <a href="#">{{userProject}}</a><br>
+    <a href="#/projects/{{userProject.Id}}">{{userProject.Name}}</a><br>
 </div>
-
+</div>
 <table class="table-responsive" id="dashboard-table">
     <thead>
     <tr>
