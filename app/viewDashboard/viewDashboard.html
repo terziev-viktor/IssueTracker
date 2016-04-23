@@ -1,8 +1,8 @@
 <h1>Dashboard</h1>
 <h2>Affiliated Projects</h2>
-{{proj in projects}}
-<a href="#">{{proj}}</a><br>
-{{proj in projects}}
+<div ng-repeat="userProject in userProjects">
+    <a href="#">{{userProject}}</a><br>
+</div>
 
 <table class="table-responsive" id="dashboard-table">
     <thead>
@@ -13,14 +13,12 @@
         <th>Due Date</th>
     </tr>
     </thead>
-    <tbody>
-    {{issue in issues}}
+    <tbody ng-repeat="issue in issues">
     <tr>
-        <td><a href="#">{{issue.title}}</a></td>
-        <td>{{issue.description}}</td>
-        <td><a href="#">{{issue.project}}</a></td>
-        <td>{{issue.duedate}}</td>
+        <td><a href="#">{{issue.Title}}</a></td>
+        <td>{{issue.Description}}</td>
+        <td><a href="#">{{issue.Project.Name}}</a></td>
+        <td>{{issue.DueDate}}</td>
     </tr>
-    {{issue in issues}}
     </tbody>
 </table>
