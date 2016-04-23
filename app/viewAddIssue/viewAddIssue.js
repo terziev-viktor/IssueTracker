@@ -13,7 +13,9 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
         $scope.addIssue = function (issue) {
             var projectId = $routeParams.id;
             projects.getProjectById(projectId).then(function (response) {
-                console.log(response);
+                issue.Project.Id = projectId;
+                issue.Project.name = response.data.Name;
+
             }, function (response) {
                 console.log(response);
             });

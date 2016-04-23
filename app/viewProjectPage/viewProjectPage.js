@@ -22,7 +22,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             });
             $scope.projectId = response.data.Id;
             $scope.projectKey = response.data.ProjectKey;
-            $scope.projectTite = response.data.Name;
+            $scope.projectTitle = response.data.Name;
             $scope.projectDescription = response.data.Description;
             $scope.currentId = response.data.Lead.Id;
             $scope.lables = labels.join(', ');

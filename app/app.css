@@ -44,3 +44,13 @@
     float:left;
     margin: 20px;
 }
+#project-issues {
+    margin: 50px 20px 20px 20px;
+    width: 40%;
+    float: right;
+}
+#project-name {
+    margin: 50px 20px 20px 20px;
+    width: 40%;
+    float: left;
+}
