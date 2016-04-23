@@ -5,9 +5,9 @@ angular.module('IssueTracker.notify', [])
 
     function notify(message) {
         var container =
-        $('#notify-container').html('<p>' + message + '</p>').show(500);
+        $('#notify-container').html('<p>' + message + '</p>').show(1000);
         setTimeout(function () {
-            container.hide(500);
+            container.hide(1000);
         }, 500);
     }
 
