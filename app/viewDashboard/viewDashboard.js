@@ -12,12 +12,13 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         $('#page-title > p').html('This Is Your Dashboard');
         issues.getUsersIssues('DueDate', 12, 1).then(function (response) {
             $scope.issues = response.data.Issues;
+            console.log(response.data.Issues);
         }, function (error) {
             console.log(error);
         });
         identity.getCurrentUser().then(function (response) {
             var id = response.Id;
-            projects.getProjectsByFilter('Lead.Id=='+id, 12, 1).then(function (response) {
+            projects.getProjectsByFilter('Lead.Id==' + id, 12, 1).then(function (response) {
                 $scope.userProjects = response.data;
                 console.log(response);
             }, function (response) {

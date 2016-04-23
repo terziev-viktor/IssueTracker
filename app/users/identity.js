@@ -14,7 +14,7 @@ angular.module('IssueTracker.users.identity', [])
             return {
                 getCurrentUser: function () {
                     if (currentUser) {
-                        return (currentUser);
+                        return $q.when(currentUser);
                     }
                     else {
                         return deferred.promise;
