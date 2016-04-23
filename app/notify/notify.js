@@ -5,10 +5,13 @@ angular.module('IssueTracker.notify', [])
 
     function notify(message) {
         var container =
-        $('#notify-container').html('<p>' + message + '</p>').show(1000);
+        $('#notify-container')
+            .css('padding', '20px')
+            .html('<p>' + message + '</p>')
+            .fadeIn(1000);
         setTimeout(function () {
-            container.hide(1000);
-        }, 500);
+            container.fadeOut(1000, function(){container.css('padding', '0px')});
+        }, 2000);
     }
 
     return {

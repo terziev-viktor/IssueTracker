@@ -41,7 +41,7 @@
   border-radius: 10px;
   font-size: 1.3em;
   font-weight: bold;
-  padding: 20px;
+  z-index: 1;
 }
 #dashboard-main {
     width: 40%;

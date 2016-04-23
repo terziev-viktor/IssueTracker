@@ -21,11 +21,10 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
             notificationer.notify('Logged in successfully. Welcome to your Dashboard!');
             $location.path('/dashboard');
         }, function (err) {
-            console.log('get token error response');
-            console.log(err);
+            notificationer.notify(err.data.error_description);
         });
     }, function (error) {
-      // TODO: Make a useful message.
+      notificationer.notify(error.data.error_description);
       console.log(error);
     });
   };
@@ -38,7 +37,8 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
         notificationer.notify('Registration successful. Welcome to your Dashboard!');
         $location.path('/dashboard');
       }, function(error) {
-          defer.reject(error);
+        defer.reject(error);
+        notificationer.notify(error.data.error_description);
         console.log(error);
       });
 
