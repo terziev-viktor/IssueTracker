@@ -10,7 +10,7 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
 
     .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer',
         function ($http, $scope, $location, issues, projects, identity, notificationer) {
-        notificationer.notify('Logged in successfully. Welcome to your Dashboard!');
+
         $('#btn-logout').show(500);
         issues.getUsersIssues('DueDate', 12, 1).then(function (response) {
             $scope.issues = response.data.Issues;

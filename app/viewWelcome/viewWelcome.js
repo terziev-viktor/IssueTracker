@@ -9,8 +9,8 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
   });
 }])
 
-.controller('welcomeCtrl', ['$scope', 'authentication', '$location', '$q', '$http', 'BASE_URL', function($scope, authentication, $location, $q, $http, BASE_URL) {
-  $("#page-title>p").html('Welcome to Issue Tracker! Login or Register to get started.');
+.controller('welcomeCtrl', ['$scope', 'authentication', '$location', '$q', '$http', 'BASE_URL', 'notificationer',
+    function($scope, authentication, $location, $q, $http, BASE_URL, notificationer) {
   $('#btn-logout').hide();
   $scope.registerUser = function (userData) {
     authentication.register(userData).then(function (response) {
@@ -18,6 +18,7 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
         authentication.getToken({'Username': userData.Email, 'Password': userData.Password}).then(function (response) {
             console.log('get token response: ');
             console.log(response);
+            notificationer.notify('Logged in successfully. Welcome to your Dashboard!');
             $location.path('/dashboard');
         }, function (err) {
             console.log('get token error response');
@@ -34,6 +35,7 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
     authentication.getToken({'Username': userData.Username, 'Password': userData.Password}).then(function (response) {
         defer.resolve(response);
         console.log(response);
+        notificationer.notify('Registration successful. Welcome to your Dashboard!');
         $location.path('/dashboard');
       }, function(error) {
           defer.reject(error);
