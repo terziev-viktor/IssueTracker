@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('IssueTracker.projects', [])
-    .factory('projects', ['$http', '$q', 'BASE_URL', function ($http, $q, BASE_URL) {
+    .factory('projects', ['$http', '$q', 'projects', 'authentication', 'BASE_URL', function ($http, $q, projects, authentication, BASE_URL) {
         function getAllProjects() {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.get(BASE_URL + '/Projects').then(function (response) {
                 def.resolve(response);
             }, function (error) {
@@ -14,6 +15,7 @@ angular.module('IssueTracker.projects', [])
 
         function getProjectById(id) {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.get(BASE_URL + '/Projects/' + id).then(function (response) {
                 def.resolve(response);
             }, function (error) {
@@ -24,6 +26,7 @@ angular.module('IssueTracker.projects', [])
         // Security: Admin
         function postProject(data) {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.post(BASE_URL + '/Projects', data).then(function (response) {
                 def.resolve(response);
             }, function (error) {
@@ -35,6 +38,7 @@ angular.module('IssueTracker.projects', [])
         // Returns object{error: 'Message'} or the edited project
         function editProject(id, data) {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.put(BASE_URL + '/Projects/' + id, data).then(function (response) {
                 def.resolve(response);
             }, function (error) {
@@ -55,6 +59,7 @@ angular.module('IssueTracker.projects', [])
         * */
         function getProjectsByFilter(filter, pageSize, pageNumber) {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.get(BASE_URL + '/Projects/?pageSize={'+pageSize+'}&pageNumber={'+pageNumber+'}&' + filter).then(function (response) {
                 def.resolve(response);
             }, function (error) {
