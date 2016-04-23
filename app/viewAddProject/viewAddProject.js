@@ -3,7 +3,7 @@
 angular.module('IssueTracker.addProject', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/projects/:id/edit', {
+        $routeProvider.when('/projects/add', {
             templateUrl: 'viewAddProject/viewAddProject.html',
             controller: 'AddProjectsCtrl'
         });

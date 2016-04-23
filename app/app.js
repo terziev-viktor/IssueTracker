@@ -14,6 +14,7 @@ angular.module('IssueTracker', [
   'IssueTracker.users.authentication',
   'IssueTracker.users.identity',
   'IssueTracker.projects',
+  'IssueTracker.projectPage',
   'IssueTracker.issues'
 
 ]).

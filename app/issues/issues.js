@@ -6,10 +6,10 @@ angular.module('IssueTracker.issues', [])
         function getProjectIssues(projectId) {
             var def = $q.defer();
             authentication.refreshCookie();
-            projects.getProjectById(projectId).then(function (success) {
-                def.resolve(success.issues);
-            }, function(error) {
-                def.reject(error)
+            $http.get(BASE_URL + '/Projects/' + projectId + '/Issues').then(function (data) {
+                def.resolve(data);
+            }, function (data) {
+                def.reject(data);
             });
             return def.promise;
         }
