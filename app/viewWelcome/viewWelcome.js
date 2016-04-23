@@ -11,6 +11,7 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
 
 .controller('welcomeCtrl', ['$scope', 'authentication', '$location', '$q', '$http', 'BASE_URL', function($scope, authentication, $location, $q, $http, BASE_URL) {
   $("#page-title>p").html('Welcome to Issue Tracker! Login or Register to get started.');
+  $('#btn-logout').hide();
   $scope.registerUser = function (userData) {
     authentication.register(userData).then(function (response) {
       console.log(response);

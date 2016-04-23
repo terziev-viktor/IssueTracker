@@ -9,10 +9,13 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
         });
     }])
 
-    .controller('addIssueCtrl', ['$scope', '$routeProvider', function($scope, $routeProvider) {
-        $scope.addProject = function (project) {
-            // TODO: Add Issue
-            console.log('in $scope.addIssue ');
-            console.dir(project);
+    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', function($scope, $routeParams, projects) {
+        $scope.addIssue = function (issue) {
+            var projectId = $routeParams.id;
+            projects.getProjectById(projectId).then(function (response) {
+                console.log(response);
+            }, function (response) {
+                console.log(response);
+            });
         };
     }]);
