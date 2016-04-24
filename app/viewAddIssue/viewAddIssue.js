@@ -9,8 +9,8 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
         });
     }])
 
-    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', 'users', 'issues', '$location',
-        function($scope, $routeParams, projects, users, issues, $location) {
+    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', 'users', 'issues', '$location', 'notificationer',
+        function($scope, $routeParams, projects, users, issues, $location, notificationer) {
             projects.getProjectById($routeParams.id).then(function (res) {
                 console.log(res);
                 $scope.priorities = res.data.Priorities;
@@ -37,8 +37,10 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
                 });
                 issues.addIssue(data).then(function (res) {
                     console.log(res);
+                    notificationer.notify('Issue Created!');
                     $location.path('/projects/' + $routeParams.id);
                 }, function (res) {
+                    notificationer.notify('Error with creating the issue');
                     console.log(res);
                 });
             }, function (e) {
