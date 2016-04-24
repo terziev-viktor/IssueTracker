@@ -34,7 +34,30 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 $scope.comments = response.data;
             }, function (res) {
                 console.log(res);
-            })
+            });
+            // TODO: Issue status can not be changed? Don't know why ;(
+            $scope.changeStatusToClosed = function () {
+                issues.changeIssueStatus(3).then(function (r) {
+                    console.log(r);
+                }, function (r) {
+                    console.log(r);
+                })
+            };
+            $scope.changeStatusToInProgress = function () {
+                issues.changeIssueStatus(2).then(function (r) {
+                    console.log(r);
+                }, function (r) {
+                    console.log(r);
+                })
+            };
+            $scope.changeStatusToOpen = function () {
+                issues.changeIssueStatus(1).then(function (r) {
+                    console.log(r);
+                }, function (r) {
+                    console.log(r);
+                })
+            };
+            // ------------------------------------------------------
             $scope.addComment = function (comment) {
                 issues.addIssueComment(issueId, comment).then(function (response) {
                     console.log('add issue comment respocse');
