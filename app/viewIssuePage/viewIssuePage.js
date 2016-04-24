@@ -9,7 +9,9 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
         });
     }])
 
-    .controller('IssuePageCtrl', ['$scope', '$routeParams', 'issues', function($scope, $routeParams, issues) {
+    .controller('IssuePageCtrl', ['$scope', '$routeParams', 'issues', 'notificationer',
+        function($scope, $routeParams, issues, notificationer) {
+            notificationer.notify('Issue Page');
         var issueId = $routeParams.id;
         issues.getIssueById(issueId).then(function (r) {
             var response = r.data;
@@ -21,8 +23,26 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             $scope.PriorityId = response.Priority.Id;
             $scope.priorityName = response.Priority.Name;
             $scope.author = response.Author.Username;
-
+            $scope.duedate = response.DueDate;
             $scope.status = response.Status.Name;
+            $scope.showClosed = response.Status.Name != "Closed";
+            $scope.showInProgress = response.Status.Name != "InProgress";
+            $scope.showOpen = response.Status.Name != "Open";
+            issues.getIssueComments(issueId).then(function (response) {
+                console.log('issue comments');
+                console.dir(response);
+                $scope.comments = response.data;
+            }, function (res) {
+                console.log(res);
+            })
+            $scope.addComment = function (comment) {
+                issues.addIssueComment(issueId, comment).then(function (response) {
+                    console.log('add issue comment respocse');
+                    console.dir(response);
+                }, function (respose) {
+                    notificationer.notify('Only Logged in user who is either a project leader or has a assigned issue in this project can add comments!')
+                });
+            };
             var labels = [];
             response.Labels.forEach(function (e) {
                 labels.push(e.Name);

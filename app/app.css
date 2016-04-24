@@ -1,9 +1,14 @@
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
 #welcome-h1, #welcome-span {
   color: #6d69ff;
   width: 50%;
   margin: 0 auto;
 }
 .frm-container {
+    float: left;
   width: 70%;
   margin: 0 auto;
 }
@@ -57,4 +62,26 @@
     margin: 50px 20px 20px 20px;
     width: 40%;
     float: left;
+}
+.status-container {
+    margin: 40px;
+    width: 20%;
+    float: right;
+}
+.comment-container {
+    display: block;
+    width: 90%;
+    margin: 50px auto;
+    float: left;
+}
+.comment-section {
+    width: 90%;
+    margin: 0 auto;
+    float: left;
+}
+.color-container {
+    width: 100%;
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+    border-radius: 5px;
 }

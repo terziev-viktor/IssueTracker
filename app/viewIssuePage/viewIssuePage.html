@@ -1,3 +1,4 @@
+<div class="wrapper">
 <form class="frm-container">
     <h1 id="issue-page-key">{{IssueKey}}</h1>
     <fieldset class="form-group">
@@ -20,3 +21,26 @@
     <p>Status: {{status}}</p>
     <p>Labels: {{labels}}</p> <!-- Labels as string separated by comma -->
 </form>
+<div class="status-container">
+    <p>Avaliable Statuses</p>
+    <p ng-show="showClosed">---Closed--- <button ng-click="changeStatusToClosed()" class="btn-primary">Change</button></p>
+    <p ng-show="showInProgress">---inProgress--- <button ng-click="changeStatusToInProgress()" class="btn-primary">Change</button></p>
+    <p ng-show="showOpen">---Open--- <button ng-click="changeStatusToOpen()" class="btn-primary">Change</button></p>
+
+</div>
+<hr>
+<div class="comment-container">
+<span>Text</span>
+<textarea name="comment" id="comment" rows="5" class="text-primary" style="min-width: 100%" ng-model="comment"></textarea><br>
+<button class="btn-primary" ng-click="addComment(comment)">Add Comment</button>
+</div>
+<div class="comment-section">
+    <div ng-repeat="comment in comments">
+        <div class="color-container">
+            <p>{{comment.Author.Username}} - {{comment.CreatedOn}}</p>
+        </div>
+        <p>{{comment.Text}}</p>
+        <hr>
+    </div>
+</div>
+</div>
