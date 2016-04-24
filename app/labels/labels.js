@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('IssueTracker.labels', [])
-    .factory('issues', ['$http', '$q', 'BASE_URL', 'projects', function IssuesFactory($http, $q, BASE_URL, projects) {
+    .factory('labels', ['$http', '$q', 'BASE_URL', 'projects', function IssuesFactory($http, $q, BASE_URL) {
 
         function getLabels(filter) {
             var def = $q.defer();

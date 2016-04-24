@@ -1,18 +1,16 @@
 <form class="frm-container">
     <fieldset class="form-group">
         <label for="assignee-select">Assignee</label>
-        <select class="form-control" id="assignee-select" ng-model="issue.assignee">
-            <option ng-repeat="user in users" value="{{user.Username}}">{{user.Username}}</option>
-        </select>
+        <input class="form-control" id="assignee-select" ng-model="issue.Assignee">
     </fieldset>
     <fieldset class="form-group">
-        <label for="duedate">Due Date</label>
-        <input type="datetime" class="form-control" id="duedate" ng-model="issue.dueDate">
+        <label for="due">Due Date</label>
+        <input type="datetime" class="form-control" id="due" ng-model="issue.DueDate">
     </fieldset>
     <fieldset class="form-group">
         <label for="priority-select">Priority</label>
         <select class="form-control" id="priority-select" ng-model="issue.priority">
-            <option ng-repeat="priority in priorities" value="{{priority.Name}}">{{priority.Name}}</option>
+            <option ng-repeat="priority in priorities" value="{{priority.Id}}">{{priority.Name}}</option>
         </select>
     </fieldset>
     <fieldset class="form-group">
@@ -21,11 +19,11 @@
     </fieldset>
     <fieldset class="form-group">
         <label for="title">Title</label>
-        <input class="form-control" id="title" ng-model="issue.title">
+        <input class="form-control" id="title" ng-model="issue.Title">
     </fieldset>
     <fieldset class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" ng-model="issue.description"></textarea>
+        <textarea class="form-control" id="description" rows="3" ng-model="issue.Description"></textarea>
     </fieldset>
     <button type="submit" class="btn btn-primary" ng-click="createIssue(issue)">Create Issue</button>
 </form>

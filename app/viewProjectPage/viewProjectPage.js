@@ -13,7 +13,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
         function($scope, $routeParams, projects, issues, identity) {
         var id = $routeParams.id;
         projects.getProjectById(id).then(function (response) {
-            var labels = [], priorities = [];
+            var labels = [], priorities = [], leadId = response.data.Lead.Id;
             response.data.Labels.forEach(function (e) {
                 labels.push(e.Name);
             });
@@ -24,7 +24,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             $scope.projectKey = response.data.ProjectKey;
             $scope.projectTitle = response.data.Name;
             $scope.projectDescription = response.data.Description;
-            $scope.currentId = response.data.Lead.Id;
+            $scope.currentId = leadId;
             $scope.lables = labels.join(', ');
             $scope.prioritites = priorities.join(', ');
             issues.getProjectIssues(id).then(function (data) {
