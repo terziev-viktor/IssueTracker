@@ -62,10 +62,15 @@ angular.module('IssueTracker.issues', [])
         function addIssueComment(issueId, data) {
             var def = $q.defer();
             authentication.refreshCookie();
-            $http.put(BASE_URL + '/Issues/' + issueId + '/comments', data).then(function (response) {
-                def.resolve(response);
-            }, function (error) {
-                def.reject(error);
+            $http({
+                method: "POST",
+                url: BASE_URL + '/Issues/' + issueId + '/comments',
+                headers: {'Content-Type': 'application/text'}, // TODO: Content-Type not supported. ;(
+                data: data
+            }).then(function successCallback(response) {
+                def.resolve(response)
+            }, function errorCallback(response) {
+                def.reject(response);
             });
             return def.promise;
         }
