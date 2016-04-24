@@ -9,8 +9,8 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
         });
     }])
 
-    .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues',
-        function($scope, $routeParams, projects, issues) {
+    .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues', 'identity',
+        function($scope, $routeParams, projects, issues, identity) {
         var id = $routeParams.id;
         projects.getProjectById(id).then(function (response) {
             var labels = [], priorities = [];
@@ -32,6 +32,15 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                 $scope.issues = data.data;
             }, function (error) {
                 console.log(error);
+            });
+            var leadId = response.data.Lead.Id;
+            identity.requestUserProfile().then(function (user) {
+                console.log('requestUserProfile: ');
+                console.log(user);
+                var userId = user.Id;
+                if(userId == leadId) {
+                    $scope.show = true;
+                }
             });
             console.log(response);
         }, function (response) {

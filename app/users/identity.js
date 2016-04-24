@@ -30,7 +30,7 @@ angular.module('IssueTracker.users.identity', [])
                         .then(function(response) {
                             currentUser = response.data;
                             deferred.resolve(currentUser);
-                            userProfileDeferred.resolve();
+                            userProfileDeferred.resolve(currentUser);
                         });
 
                     return userProfileDeferred.promise;
