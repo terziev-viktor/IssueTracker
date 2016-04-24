@@ -16,8 +16,7 @@ angular.module('IssueTracker', [
   'IssueTracker.projects',
   'IssueTracker.projectPage',
   'IssueTracker.issues',
-   'IssueTracker.notify'
-
+  'IssueTracker.notify'
 ]).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/welcome'});

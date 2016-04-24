@@ -9,6 +9,23 @@ angular.module('IssueTracker.addProject', ['ngRoute'])
         });
     }])
 
-    .controller('AddProjectsCtrl', ['$scope', '$routeProvider', function($scope, $routeProvider) {
+    .controller('AddProjectsCtrl', ['$scope','projects', 'users', '$location',
+        function($scope, projects, users) {
 
+        $scope.createProject = function (project) {
+            console.log(project);
+            var data = {};
+            data.Name = project.name;
+            data.Description = project.description;
+            data.ProjectKey = project.key;
+            data.Labels = project.label.split(', ');
+            data.Priorities = project.priorities.split(', ');
+            data.LeadId = project.LeadId;
+            projects.postProject(data).then(function (response) {
+                console.log(response);
+                $location.path('/Projects/' + response.Id);
+            }, function (res) {
+                console.log(res);
+            });
+        }
     }]);

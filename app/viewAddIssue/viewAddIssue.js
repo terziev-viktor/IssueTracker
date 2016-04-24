@@ -9,15 +9,9 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
         });
     }])
 
-    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', function($scope, $routeParams, projects) {
-        $scope.addIssue = function (issue) {
-            var projectId = $routeParams.id;
-            projects.getProjectById(projectId).then(function (response) {
-                issue.Project.Id = projectId;
-                issue.Project.name = response.data.Name;
+    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', 'users',
+        function($scope, $routeParams, projects, users) {
+        $scope.createIssue = function (issue) {
 
-            }, function (response) {
-                console.log(response);
-            });
         };
     }]);

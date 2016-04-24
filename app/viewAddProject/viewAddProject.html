@@ -1,23 +1,27 @@
 <form class="frm-container">
     <fieldset class="form-group">
-        <label for="title">Name</label>
-        <input type="text" class="form-control" id="title" placeholder="Issue Title" ng-model="project.name">
+        <label for="title">Leader Id</label>
+        <input type="text" class="form-control" id="title" placeholder="Leader of Project" ng-model="project.LeadId">
     </fieldset>
     <fieldset class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="2" ng-model="project.description"></textarea>
+        <label for="key">Project Key</label>
+        <input class="form-control" id="key" placeholder="Project Key" ng-model="project.key">
     </fieldset>
     <fieldset class="form-group">
-        <label for="project">Project Key</label>
-        <input type="text" class="form-control" id="project" placeholder="Project Key" ng-model="project.key">
+        <label for="project">Priorities</label>
+        <input type="text" class="form-control" id="project" placeholder="Project Priorities" ng-model="project.priorities">
     </fieldset>
     <fieldset class="form-group">
-        <label for="leadId">Lead ID</label>
-        <input type="text" class="form-control" id="leadId" placeholder="Lead ID" ng-model="project.leadId">
+        <label for="label">Label</label>
+        <input type="text" class="form-control" id="label" ng-model="project.label">
     </fieldset>
     <fieldset class="form-group">
-        <label for="priorityId">Priorities (separated by comma)</label>
-        <input type="text" class="form-control" id="priorityId" placeholder="Low, Medium, High" ng-model="project.priority">
+        <label for="name">Project Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="project.name">
     </fieldset>
-    <button type="submit" class="btn btn-primary" ng-click="addProject(project)">Add Project</button>
+    <fieldset class="form-group">
+        <label for="description">Project Name</label>
+        <textarea type="text" class="form-control" id="description" rows="3" ng-model="project.description"></textarea>
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="createProject(project)">Create Project</button>
 </form>
