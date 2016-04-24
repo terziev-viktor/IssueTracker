@@ -10,8 +10,7 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
 
     .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer', 'authentication',
         function ($http, $scope, $location, issues, projects, identity, notificationer, authentication) {
-            debugger;
-            console.log(authentication.isLoggedIn());
+            var page = 1;
         if(!authentication.isLoggedIn()) {
             $location.path('/welcome');
         }
@@ -20,12 +19,18 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
             btnLogout.on('click', function () {
                 authentication.logout();
             });
-        issues.getUsersIssues('DueDate', 12, 1).then(function (response) {
-            $scope.issues = response.data.Issues;
-            console.log(response.data.Issues);
-        }, function (error) {
-            console.log(error);
-        });
+        function loadUserIssues() {
+            issues.getUsersIssues('DueDate', 12, page).then(function (response) {
+                if(response.data.Issues != 0) {
+                    $scope.issues = response.data.Issues;
+                } else {
+                    page--;
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        loadUserIssues();
         identity.getCurrentUser().then(function (response) {
             var id = response.Id;
             console.log('get current user response:');
@@ -37,5 +42,14 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
                 console.log(response);
             })
         });
-
+        $scope.nextPage = function () {
+            page++;
+            loadUserIssues();
+        };
+        $scope.previousPage = function () {
+            page--;
+            if(page > 0) {
+                loadUserIssues();
+            } else {page = 1;}
+        }
     }]);
