@@ -1,34 +1,40 @@
 <div class="wrapper">
 <form class="frm-container">
-    <h1 id="issue-page-key">{{IssueKey}}</h1>
+    <h1 id="issue-page-key" class="color-container">{{IssueKey}}</h1>
     <fieldset class="form-group">
-        <h2>Title:{{Title}}</h2>
+        <span>Title:</span>
+        <h2 class="color-container">{{Title}}</h2>
     </fieldset>
     <fieldset class="form-group">
-        <h2>Description:{{Description}}</h2>
+        <span>Description:</span><br>
+        <h2 class="color-container">{{Description}}</h2>
     </fieldset>
     <fieldset class="form-group">
-        <h2>Assigneeid:{{Assigneeid}}</h2>
+        <span>Assigneeid:</span><br>
+        <h2 class="color-container">{{Assigneeid}}</h2>
     </fieldset>
     <fieldset class="form-group">
-        <h2>PriorityId:(currentId: {{PriorityId}}) -> {{priorityName}}</h2>
+        <span>PriorityId:</span><br>
+        <h2 class="color-container">(currentId: {{PriorityId}}) -> {{priorityName}}</h2>
     </fieldset>
     <fieldset class="form-group">
-        <h2>Due Date:{{duedate}}</h2>
+        <span>Due Date:</span><br>
+        <h2 class="color-container">{{duedate}}</h2>
     </fieldset>
     <p>Author: {{author}}</p>
     <p>Project: {{Project}}</p>
     <p>Status: {{status}}</p>
     <p>Labels: {{labels}}</p> <!-- Labels as string separated by comma -->
+    <hr>
 </form>
 <div class="status-container">
     <p>Avaliable Statuses</p>
     <p ng-show="showClosed">---Closed--- <button ng-click="changeStatusToClosed()" class="btn-primary">Change</button></p>
     <p ng-show="showInProgress">---inProgress--- <button ng-click="changeStatusToInProgress()" class="btn-primary">Change</button></p>
     <p ng-show="showOpen">---Open--- <button ng-click="changeStatusToOpen()" class="btn-primary">Change</button></p>
-
+    <hr>
 </div>
-<hr>
+
 <div class="comment-container">
 <span>Text</span>
 <textarea name="comment" id="comment" rows="5" class="text-primary" style="min-width: 100%" ng-model="comment"></textarea><br>
