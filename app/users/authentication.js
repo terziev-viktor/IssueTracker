@@ -1,5 +1,6 @@
 angular.module('IssueTracker.users.authentication', [])
-    .factory('authentication', ['$http', '$q', '$cookies', 'BASE_URL', 'identity', function ($http, $q, $cookies, BASE_URL, identity) {
+    .factory('authentication', ['$http', '$q', '$cookies', 'BASE_URL', 'identity', '$location',
+        function ($http, $q, $cookies, BASE_URL, identity, $location) {
 
         var AUTHENTICATION_COOKIE_KEY = '!__Authentication_Cookie_Key__!';
 
@@ -59,7 +60,9 @@ angular.module('IssueTracker.users.authentication', [])
                 });
             return def.promise;
         }
-
+        function isLoggedIn() {
+            return $cookies.get(AUTHENTICATION_COOKIE_KEY) != undefined;
+        }
         function logout() {
             $cookies.remove(AUTHENTICATION_COOKIE_KEY);
             $http.defaults.headers.common.Authorization = undefined;
@@ -71,6 +74,7 @@ angular.module('IssueTracker.users.authentication', [])
             register: register,
             logout: logout,
             getToken: getToken,
-            refreshCookie: refreshCookie
+            refreshCookie: refreshCookie,
+            isLoggedIn: isLoggedIn
         }
     }]);

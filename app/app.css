@@ -8,7 +8,6 @@
   margin: 0 auto;
 }
 .frm-container {
-    float: left;
   width: 70%;
   margin: 0 auto;
 }
@@ -20,6 +19,10 @@
 }
 .navbar {
   margin-bottom: 0;
+}
+#btn-logout {
+    position: fixed;
+    right: 0;
 }
 #dashboard-table {
   width: 50%;

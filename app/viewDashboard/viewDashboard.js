@@ -8,10 +8,18 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer',
-        function ($http, $scope, $location, issues, projects, identity, notificationer) {
-
-        $('#btn-logout').show(500);
+    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer', 'authentication',
+        function ($http, $scope, $location, issues, projects, identity, notificationer, authentication) {
+            debugger;
+            console.log(authentication.isLoggedIn());
+        if(!authentication.isLoggedIn()) {
+            $location.path('/welcome');
+        }
+        var btnLogout = $('#btn-logout');
+            btnLogout.show(500);
+            btnLogout.on('click', function () {
+                authentication.logout();
+            });
         issues.getUsersIssues('DueDate', 12, 1).then(function (response) {
             $scope.issues = response.data.Issues;
             console.log(response.data.Issues);
