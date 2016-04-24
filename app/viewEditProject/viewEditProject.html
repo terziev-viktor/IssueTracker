@@ -1,24 +1,24 @@
 <h1 class="color-container-title">Edit Project</h1>
 <form class="frm-container">
     <fieldset class="form-group">
-        <label for="title">Name</label>
-        <input type="text" class="form-control" id="title" placeholder="Issue Title" ng-model="project.name">
+        <label for="title">Leader</label>
+        <input type="text" class="form-control" id="title" placeholder="{{project.Lead.Username}}" ng-model="project.lead">
     </fieldset>
     <fieldset class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="2" ng-model="project.description"></textarea>
+        <label for="project">Priorities</label>
+        <input type="text" class="form-control" id="project" placeholder="{{priorities}}" ng-model="project.priorities">
     </fieldset>
     <fieldset class="form-group">
-        <label for="project">Project Key</label>
-        <input type="text" class="form-control" id="project" placeholder="Project Key" ng-model="project.key">
+        <label for="label">Label</label>
+        <input type="text" class="form-control" id="label" placeholder="{{labels}}" ng-model="project.label">
     </fieldset>
     <fieldset class="form-group">
-        <label for="leadId">Lead ID</label>
-        <input type="text" class="form-control" id="leadId" placeholder="Lead ID" ng-model="project.leadId">
+        <label for="name">Project Name</label>
+        <input type="text" class="form-control" id="name" placeholder="{{project.Name}}" ng-model="project.name">
     </fieldset>
     <fieldset class="form-group">
-        <label for="priorityId">Priorities (separated by comma)</label>
-        <input type="text" class="form-control" id="priorityId" placeholder="Low, Medium, High" ng-model="project.priority">
+        <label for="description">Project Description</label>
+        <textarea type="text" class="form-control" id="description" rows="3" ng-model="project.description" placeholder="{{project.Description}}"></textarea>
     </fieldset>
-    <button type="submit" class="btn btn-primary" ng-click="putProject(project)">Add Issue</button>
+    <button type="submit" class="btn btn-primary" ng-click="putProject(project)">Edit Project</button>
 </form>

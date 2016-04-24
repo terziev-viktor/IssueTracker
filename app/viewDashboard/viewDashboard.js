@@ -8,9 +8,9 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer', 'authentication',
-        function ($http, $scope, $location, issues, projects, identity, notificationer, authentication) {
-            var page = 1;
+    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer', 'authentication', 'users',
+        function ($http, $scope, $location, issues, projects, identity, notificationer, authentication, users) {
+        var page = 1;
         if(!authentication.isLoggedIn()) {
             $location.path('/welcome');
         }
