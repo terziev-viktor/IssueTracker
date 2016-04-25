@@ -78,6 +78,9 @@ th, td {
     width: 40%;
     float: right;
 }
+#project-table {
+    margin: 0 auto;
+}
 #project-name {
     margin: 50px 20px 20px 20px;
     width: 40%;
