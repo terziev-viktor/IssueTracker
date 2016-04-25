@@ -17,6 +17,7 @@ angular.module('IssueTracker', [
   'IssueTracker.projects.edit',
   'IssueTracker.projectPage',
   'IssueTracker.issues',
+  'IssueTracker.issues.edit',
   'IssueTracker.notify',
   'IssueTracker.labels'
 ]).

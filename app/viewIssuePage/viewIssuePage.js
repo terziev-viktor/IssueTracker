@@ -9,12 +9,13 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
         });
     }])
 
-    .controller('IssuePageCtrl', ['$scope', '$routeParams', 'issues', 'notificationer',
-        function($scope, $routeParams, issues, notificationer) {
-            notificationer.notify('Issue Page');
-        var issueId = $routeParams.id;
+    .controller('IssuePageCtrl', ['$scope', '$routeParams', 'issues', 'projects', 'notificationer', 'identity', '$location',
+        function($scope, $routeParams, issues, projects, notificationer, identity, $location) {
+        notificationer.notify('Issue Page');
+        var issueId = $routeParams.id, currentUser, response;
+
         issues.getIssueById(issueId).then(function (r) {
-            var response = r.data;
+            response = r.data;
             $scope.IssueKey = response.IssueKey;
             $scope.Title = response.Title;
             $scope.Description = response.Description;
@@ -33,6 +34,7 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                     $scope.comments = response.data;
                 }, function (res) {
                     console.log(res);
+                    notificationer.notify("Couldn't Load comments...");
                 });
             }
             showComments();
@@ -59,6 +61,19 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 })
             };
             // ------------------------------------------------------
+            $scope.redirectToEdit = function () {
+                console.log(response);
+                console.log('/issues/' + response.Id + '/edit');
+                $location.path('/issues/' + response.Id + '/edit');
+            };
+            identity.getCurrentUser().then(function (r) {
+                currentUser = r;
+                projects.getProjectById(response.Project.Id).then(function (proj) {
+                    $scope.show = (proj.data.Lead.Id == currentUser.Id || response.Assignee.Id == currentUser.id) == true;
+                })
+            }, function (r) {
+                console.log(r);
+            });
             $scope.addComment = function (comment) {
                 issues.addIssueComment(issueId, comment).then(function (response) {
                     showComments();

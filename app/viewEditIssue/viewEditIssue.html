@@ -1,32 +1,34 @@
 <h1 class="color-container-title">Edit Issue</h1>
 <form class="frm-container">
     <fieldset class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Issue Title" ng-model="issue.title">
+        <label for="title" ng-disabled="canEditTitle">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="{{issue.Title}}" ng-model="_issue.title">
     </fieldset>
-    <fieldset class="form-group">
+    <fieldset class="form-group" ng-disabled="canEditDesc">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" ng-model="issue.description"></textarea>
+        <textarea class="form-control" id="description" rows="3" placeholder="{{issue.Description}}" ng-model="_issue.description"></textarea>
     </fieldset>
-    <fieldset class="form-group">
-        <label for="project">Project</label>
-        <input type="text" class="form-control" id="project" placeholder="Project name" ng-model="issue.projectName">
+    <fieldset class="form-group" disabled="disabled">
+        <label for="project" >Project</label>
+        <input type="text" class="form-control" id="project" placeholder="{{issue.Project.Name}}" ng-model="_issue.projectName">
     </fieldset>
-    <fieldset class="form-group">
-        <label for="assigneeId">Assigneeid</label>
-        <input type="text" class="form-control" id="assigneeId" placeholder="Assignee ID" ng-model="issue.assigneeId">
+    <fieldset class="form-group" ng-disabled="canEditAssignee" disabled>
+        <label for="assigneeId">Assignee</label>
+        <input type="text" class="form-control" id="assigneeId" placeholder="{{issue.Assignee.Username}}" ng-model="_issue.assigneeName">
     </fieldset>
-    <fieldset class="form-group">
+    <fieldset class="form-group" ng-disabled="canEditLabels">
+        <label for="assigneeId">Labels</label>
+        <input type="text" class="form-control" id="labels" placeholder="{{labels}}" ng-model="_issue.labels">
+    </fieldset>
+    <fieldset class="form-group" ng-disabled="canEditPriorities">
         <label for="priorityId">Priority ID</label>
-        <select class="form-control" id="priorityId" ng-model="issue.priority">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+        <select class="form-control" id="priorityId" ng-model="_issue.priorityId">
+            <option ng-repeat="p in proj.Priorities" value="{{p.Id}}">{{p.Name}}</option>
         </select>
     </fieldset>
-    <fieldset class="form-group">
+    <fieldset class="form-group" ng-disabled="canEditDueDate">
         <label for="duedate">Due Date</label>
-        <input type="datetime" class="form-control" id="duedate" ng-model="issue.dueDate">
+        <input type="datetime" class="form-control" placeholder="{{issue.DueDate}}" id="duedate" ng-model="_issue.dueDate">
     </fieldset>
-    <button type="submit" class="btn btn-primary" ng-click="putIssue(issue)">Add Issue</button>
+    <button type="submit" class="btn btn-primary" ng-click="putIssue(_issue)">Add Issue</button>
 </form>

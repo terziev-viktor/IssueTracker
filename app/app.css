@@ -26,6 +26,11 @@ th, td {
 .navbar {
   margin-bottom: 0;
 }
+#btn-edit {
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 #dashboard-table {
     width: 50%;
     float: right;
