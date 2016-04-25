@@ -31,11 +31,6 @@ th, td {
     padding-left: 20px;
     padding-right: 20px;
 }
-#dashboard-table {
-    width: 50%;
-    float: right;
-    margin: 80px 20px 20px 20px;
-}
 #dashboard-buttons {
     width: 50%;
     float: right;
@@ -64,10 +59,19 @@ th, td {
   font-weight: bold;
   z-index: 1;
 }
+#dashboard-table {
+    width: 100%;
+    float: right;
+    margin: 10px 20px 20px 20px;
+}
 #dashboard-main {
     width: 40%;
     float:left;
     margin: 20px;
+}
+#dashboard-second {
+    width: 50%;
+    float: right;
 }
 #project-issues {
     margin: 50px 20px 20px 20px;

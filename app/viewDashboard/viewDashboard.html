@@ -2,11 +2,13 @@
 <div id="dashboard-main">
     <a href="#/projects/add"><button class="btn-primary">Add Project</button></a>
 <h2>Affiliated Projects</h2>
+    <hr>
 <div ng-repeat="userProject in userProjects">
     <a href="#/projects/{{userProject.Id}}">{{userProject.Name}}</a><br>
 </div>
 </div>
 <div id="dashboard-second">
+    <h3 class="color-container-title">My Issues</h3>
     <table class="table-responsive" id="dashboard-table">
      <thead>
      <tr>
@@ -25,6 +27,7 @@
        </tr>
        </tbody>
     </table>
+
     <div id="dashboard-buttons">
     <button class="btn-primary" ng-click="previousPage()">Previous Page</button>
     <button class="btn-primary" ng-click="nextPage()">Next Page</button>
