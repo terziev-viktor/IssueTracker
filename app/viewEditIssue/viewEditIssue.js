@@ -17,7 +17,6 @@ angular.module('IssueTracker.issues.edit', ['ngRoute'])
                 issueProject = r.data;
                 identity.getCurrentUser().then(function (res) {
                     currentUser = res;
-                    console.log(currentIssue);
                     $scope.issue = currentIssue;
                     $scope.proj = issueProject;
                     var names = [];
@@ -29,6 +28,12 @@ angular.module('IssueTracker.issues.edit', ['ngRoute'])
             })
         });
         $scope.putIssue = function (_data) {
+            if(_data == undefined) {
+                notificationer.notify('Fill at least one gap.');
+                return;
+            }
+            console.log('_data');
+            console.log(_data);
             var data = {}, labels = [], lId = 1;
             data.Title = _data.title || currentIssue.Title;
             data.Description = _data.description || currentIssue.Description;
