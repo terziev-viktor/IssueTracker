@@ -8,17 +8,23 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer', 'authentication', 'users',
-        function ($http, $scope, $location, issues, projects, identity, notificationer, authentication, users) {
+    .controller('DashboardCtrl', ['$http', '$scope', '$location', 'issues', 'projects', 'identity', 'notificationer', 'authentication',
+        function ($http, $scope, $location, issues, projects, identity, notificationer, authentication) {
         var page = 1;
         if(!authentication.isLoggedIn()) {
             $location.path('/welcome');
         }
-        var btnLogout = $('#btn-logout');
+        var btnLogout = $('#btn-logout'), logged_user_p = $('#logged-user');
             btnLogout.show(500);
             btnLogout.on('click', function () {
                 authentication.logout();
+                logged_user_p.html('');
             });
+        identity.requestUserProfile().then(function() {
+            identity.getCurrentUser().then(function (currentUser) {
+                logged_user_p.html(currentUser.Username);
+            });
+        });
         function loadUserIssues() {
             issues.getUsersIssues('DueDate', 12, page).then(function (response) {
                 if(response.data.Issues != 0) {

@@ -21,10 +21,10 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             $scope.Description = response.Description;
             $scope.Project = response.Project.Name;
             $scope.Assigneeid = response.Assignee.Id;
+            $scope.AssigneeName = response.Assignee.Username;
             $scope.PriorityId = response.Priority.Id;
             $scope.priorityName = response.Priority.Name;
             $scope.author = response.Author.Username;
-            $scope.assignee = response.Assignee.Username;
             $scope.duedate = response.DueDate;
             $scope.status = response.Status.Name;
             $scope.showClosed = response.Status.Name != "Closed";
@@ -70,8 +70,8 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             identity.getCurrentUser().then(function (r) {
                 currentUser = r;
                 projects.getProjectById(response.Project.Id).then(function (proj) {
-                    $scope.show = (proj.data.Lead.Id == currentUser.Id || response.Assignee.Id == currentUser.id) == true;
-                })
+                    $scope.show = (proj.data.Lead.Id == currentUser.Id || response.Assignee.Id == currentUser.Id) == true;
+                });
             }, function (r) {
                 console.log(r);
             });
