@@ -24,6 +24,7 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             $scope.PriorityId = response.Priority.Id;
             $scope.priorityName = response.Priority.Name;
             $scope.author = response.Author.Username;
+            $scope.assignee = response.Assignee.Username;
             $scope.duedate = response.DueDate;
             $scope.status = response.Status.Name;
             $scope.showClosed = response.Status.Name != "Closed";
