@@ -28,13 +28,14 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             $scope.showClosed = response.Status.Name != "Closed";
             $scope.showInProgress = response.Status.Name != "InProgress";
             $scope.showOpen = response.Status.Name != "Open";
-            issues.getIssueComments(issueId).then(function (response) {
-                console.log('issue comments');
-                console.dir(response);
-                $scope.comments = response.data;
-            }, function (res) {
-                console.log(res);
-            });
+            function showComments() {
+                issues.getIssueComments(issueId).then(function (response) {
+                    $scope.comments = response.data;
+                }, function (res) {
+                    console.log(res);
+                });
+            }
+            showComments();
             // TODO: Issue status can not be changed? Don't know why ;(
             $scope.changeStatusToClosed = function () {
                 issues.changeIssueStatus(3).then(function (r) {
@@ -60,9 +61,10 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             // ------------------------------------------------------
             $scope.addComment = function (comment) {
                 issues.addIssueComment(issueId, comment).then(function (response) {
-                    console.log('add issue comment respocse');
-                    console.dir(response);
-                }, function (respose) {
+                    showComments();
+                    $('#comment').val('');
+                    notificationer.notify('Comment Added Successfully!');
+                }, function () {
                     notificationer.notify('Only Logged in user who is either a project leader or has a assigned issue in this project can add comments!')
                 });
             };
