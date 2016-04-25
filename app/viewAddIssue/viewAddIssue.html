@@ -2,11 +2,11 @@
 <form class="frm-container">
     <fieldset class="form-group">
         <label for="assignee-select">Assignee</label>
-        <input class="form-control" id="assignee-select" ng-model="issue.Assignee">
+        <input class="form-control" required id="assignee-select" ng-model="issue.Assignee">
     </fieldset>
     <fieldset class="form-group">
         <label for="due">Due Date</label>
-        <input type="datetime" class="form-control" id="due" ng-model="issue.DueDate">
+        <input type="datetime" required class="form-control" id="due" ng-model="issue.DueDate">
     </fieldset>
     <fieldset class="form-group">
         <label for="priority-select">Priority</label>
@@ -16,15 +16,15 @@
     </fieldset>
     <fieldset class="form-group">
         <label for="labels-inp">Lables</label>
-        <input type="text" id="labels-inp" value="{{labels}}" ng-model="issue.labels">
+        <input type="text" required id="labels-inp" value="{{labels}}" ng-model="issue.labels">
     </fieldset>
     <fieldset class="form-group">
         <label for="title">Title</label>
-        <input class="form-control" id="title" ng-model="issue.Title">
+        <input class="form-control" required id="title" ng-model="issue.Title">
     </fieldset>
     <fieldset class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" ng-model="issue.Description"></textarea>
+        <textarea class="form-control" required id="description" rows="3" ng-model="issue.Description"></textarea>
     </fieldset>
     <button type="submit" class="btn btn-primary" ng-click="createIssue(issue)">Create Issue</button>
 </form>

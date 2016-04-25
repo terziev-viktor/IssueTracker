@@ -1,8 +1,8 @@
 <h1 class="color-container-title">Project Page</h1>
 <div id="project-name">
 <h1>{{projectKey}}</h1>
-    <a href="#/projects/{{projectId}}/edit"><button ng-show="show" class="btn-primary">Edit</button></a>
-    <a href="#/projects/{{projectId}}/add-issue"><button class="btn-primary">Add Issue</button></a>
+    <a href="#/projects/{{projectId}}/edit"><button ng-show="showEdit" class="btn-primary">Edit</button></a>
+    <a href="#/projects/{{projectId}}/add-issue"><button class="btn-primary" ng-show="showAdd">Add Issue</button></a>
     <h1 class="color-container">{{projectKey}}</h1>
     <p>Name:</p>
     <h1 class="color-container">{{projectTitle}}</h1>

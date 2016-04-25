@@ -9,8 +9,8 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
         });
     }])
 
-    .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues', 'identity',
-        function($scope, $routeParams, projects, issues, identity) {
+    .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues', 'identity', 'authentication',
+        function($scope, $routeParams, projects, issues, identity, authentication) {
         var id = $routeParams.id;
         projects.getProjectById(id).then(function (response) {
             console.log(response);
@@ -34,12 +34,14 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             }, function (error) {
                 console.log(error);
             });
-            var leadId = response.data.Lead.Id;
-            identity.getCurrentUser().then(function (user) {
-                if(user.Id == leadId) {
-                    $scope.show = true;
-                }
-            });
+            authentication.refreshCookie();
+            identity.requestUserProfile().then(function () {
+                identity.getCurrentUser().then(function (user) {
+                    $scope.showEdit = (user.Id == leadId);
+                    $scope.showAdd = (user.isAdmin || user.Id == leadId);
+                });
+            })
+
         }, function (response) {
             console.log(response);
         })
