@@ -32,8 +32,6 @@ angular.module('IssueTracker.issues.edit', ['ngRoute'])
                 notificationer.notify('Fill at least one gap.');
                 return;
             }
-            console.log('_data');
-            console.log(_data);
             var data = {}, labels = [], lId = 1;
             data.Title = _data.title || currentIssue.Title;
             data.Description = _data.description || currentIssue.Description;
@@ -54,9 +52,7 @@ angular.module('IssueTracker.issues.edit', ['ngRoute'])
                 data.Labels = currentIssue.Labels;
             }
             issues.editIssue(currentIssue.Id, data).then(function (re) {
-                notificationer.notify('Editing Issue Successful!');
-                console.log(re);
-                debugger;
+                notificationer.notify('Editing Issue Successful!'); 
                 $location.path('/issues/' + re.data.Id);
             }, function (r) {
                 notificationer.notify('Error with editing the issue');
