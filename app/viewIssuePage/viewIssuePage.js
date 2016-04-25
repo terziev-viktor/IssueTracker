@@ -63,8 +63,6 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             };
             // ------------------------------------------------------
             $scope.redirectToEdit = function () {
-                console.log(response);
-                console.log('/issues/' + response.Id + '/edit');
                 $location.path('/issues/' + response.Id + '/edit');
             };
             identity.getCurrentUser().then(function (r) {
@@ -89,8 +87,6 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 labels.push(e.Name);
             });
             $scope.labels = labels.join(', ');
-            var isAdmin = response.Assignee.isAdmin;
-            console.log(response);
         }, function (error) {
             console.log(error);
         })
