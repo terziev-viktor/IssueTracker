@@ -37,11 +37,17 @@ angular.module('IssueTracker.users', [])
         function changePassword(data) {
             var defer = $q.defer();
             authentication.refreshCookie();
-            $http.post(BASE_URL + '/api/Account/ChangePassword', data).then(function (users) {
-                defer.resolve(users);
-            }, function (error) {
-                defer.reject(error);
+            $http({
+                method: "POST",
+                url: BASE_URL + '/api/Account/ChangePassword',
+                headers: {'Content-Type': 'application/json'},
+                data: data
+            }).then(function successCallback(response) {
+                defer.resolve(response)
+            }, function errorCallback(response) {
+                defer.reject(response);
             });
+
             return defer.promise;
         }
         return {

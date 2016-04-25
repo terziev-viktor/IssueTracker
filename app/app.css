@@ -13,6 +13,10 @@ th, td {
   width: 50%;
   margin: 0 auto;
 }
+.frm-container-small {
+    width: 30%;
+    margin: 0 auto;
+}
 .frm-container {
   width: 70%;
   margin: 0 auto;
@@ -116,4 +120,7 @@ th, td {
     background-color: rgb(231, 231, 231);
     padding: 10px;
     border-radius: 5px;
+}
+.color-container-title-caption {
+    color: #00b3ee;
 }

@@ -12,6 +12,7 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
 .controller('welcomeCtrl', ['$scope', 'authentication', '$location', '$q', '$http', 'BASE_URL', 'notificationer',
     function($scope, authentication, $location, $q, $http, BASE_URL, notificationer) {
   $('#btn-logout').hide();
+  $('#btn-profile').hide();
   $scope.registerUser = function (userData) {
     authentication.register(userData).then(function (response) {
       console.log(response);

@@ -1,0 +1,21 @@
+<h1 class="color-container-title">Profile</h1>
+<div class="color-container-title">
+    <h2>{{user.Username}}</h2>
+    <span class="color-container-title-caption">[{{isAdmin}}]</span>
+</div>
+<form class="frm-container-small">
+    <fieldset class="form-group">
+        <label for="pass">Old Password</label>
+        <input type="password" pattern=".{6,100}" class="form-control" id="pass" required ng-model="data.OldPassword">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="newPass">New Password</label>
+        <input type="password" pattern=".{6,100}" class="form-control" id="newPass" required ng-model="data.NewPassword">
+        <p>Password must contain 6 - 100 symbols.</p>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="confirmPass">Confirm New Password</label>
+        <input type="password" pattern=".{6,100}" class="form-control" id="confirmPass" required ng-model="data.ConfirmPassword">
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="changePass(data)">Change Password</button>
+</form>

@@ -14,20 +14,15 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         if(!authentication.isLoggedIn()) {
             $location.path('/welcome');
         }
-        var btnLogout = $('#btn-logout'), logged_user_p = $('#logged-user');
-            btnLogout.show(500);
-            btnLogout.on('click', function () {
-                authentication.logout();
-                logged_user_p.html('');
-            });
-        if(logged_user_p.is(':empty')) {
-            authentication.refreshCookie();
-            identity.requestUserProfile().then(function() {
-                identity.getCurrentUser().then(function (currentUser) {
-                    logged_user_p.html(currentUser.Username);
-                });
-            });
-        }
+        var btnLogout = $('#btn-logout'), btnProfile = $('#btn-profile');
+        btnLogout.show(500);
+        btnLogout.on('click', function () {
+            authentication.logout();
+        });
+        btnProfile.show(500);
+        btnProfile.on('click', function () {
+            $location.path('/profile/password');
+        });
         function loadUserIssues() {
             issues.getUsersIssues('DueDate', 12, page).then(function (response) {
                 if(response.data.Issues != 0) {

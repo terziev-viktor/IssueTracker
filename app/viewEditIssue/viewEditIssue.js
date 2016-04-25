@@ -52,7 +52,7 @@ angular.module('IssueTracker.issues.edit', ['ngRoute'])
                 data.Labels = currentIssue.Labels;
             }
             issues.editIssue(currentIssue.Id, data).then(function (re) {
-                notificationer.notify('Editing Issue Successful!'); 
+                notificationer.notify('Editing Issue Successful!');
                 $location.path('/issues/' + re.data.Id);
             }, function (r) {
                 notificationer.notify('Error with editing the issue');
