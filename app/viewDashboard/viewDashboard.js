@@ -20,11 +20,14 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
                 authentication.logout();
                 logged_user_p.html('');
             });
-        identity.requestUserProfile().then(function() {
-            identity.getCurrentUser().then(function (currentUser) {
-                logged_user_p.html(currentUser.Username);
+        if(logged_user_p.is(':empty')) {
+            authentication.refreshCookie();
+            identity.requestUserProfile().then(function() {
+                identity.getCurrentUser().then(function (currentUser) {
+                    logged_user_p.html(currentUser.Username);
+                });
             });
-        });
+        }
         function loadUserIssues() {
             issues.getUsersIssues('DueDate', 12, page).then(function (response) {
                 if(response.data.Issues != 0) {
