@@ -4,7 +4,9 @@
 <h2>Affiliated Projects</h2>
     <hr>
 <div ng-repeat="userProject in userProjects">
-    <a href="#/projects/{{userProject.Id}}">{{userProject.Name}}</a><br>
+    <img src="img/project-ico.gif" alt="ico.gif" width="20px" height="20px" class="project-image">
+    <a href="#/projects/{{userProject.Id}}"><h3 class="project-name">{{userProject.Name}}</h3></a><br>
+    <hr>
 </div>
 </div>
 <div id="dashboard-second">

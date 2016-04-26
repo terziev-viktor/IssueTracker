@@ -36,10 +36,9 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         }
         loadUserIssues();
         identity.getCurrentUser().then(function (response) {
-            var id = response.Id;
             console.log('get current user response:');
             console.log(response);
-            projects.getProjectsByFilter('Lead.Id=="' + response.Id + '"', 12, 1).then(function (response) {
+            projects.getProjectsByFilter('Lead.Id=' + response.Id, 12, 1).then(function (response) {
                 $scope.userProjects = response.data;
                 console.log(response);
             }, function (response) {
