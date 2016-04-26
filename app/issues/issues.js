@@ -102,7 +102,7 @@ angular.module('IssueTracker.issues', [])
         function changeIssueStatus(statusId) {
             var def = $q.defer();
             authentication.refreshCookie();
-            $http.put(BASE_URL + '/Issues/{id}/changestatus?statusid=' + statusId)
+            $http.put(BASE_URL + '/Issues/{id}/changestatus?statusId=' + statusId)
                 .then(function (response) {
                     def.resolve(response);
                 }, function (error) {
