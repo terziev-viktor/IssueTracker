@@ -110,6 +110,16 @@ angular.module('IssueTracker.issues', [])
                 });
             return def.promise;
         }
+        function getUserAssignedIssues(pageSize, pageNumber, orderBy) {
+            var defer = $q.defer();
+            authentication.refreshCookie();
+            $http.get(BASE_URL + '/Issues/me?pageSize='+pageSize+'&pageNumber='+pageNumber+'&orderBy=' + orderBy).then(function (r) {
+                defer.resolve(r);
+            }, function (err) {
+                defer.reject(err)
+            });
+            return defer.promise;
+        }
         return {
             getProjectIssues: getProjectIssues,
             getIssueById: getIssueById,
@@ -119,6 +129,7 @@ angular.module('IssueTracker.issues', [])
             addIssueComment: addIssueComment,
             getUsersIssues: getUsersIssues,
             getIssuesByFilter: getIssuesByFilter,
-            changeIssueStatus: changeIssueStatus
+            changeIssueStatus: changeIssueStatus,
+            getUserAssignedIssues: getUserAssignedIssues
         }
     }]);

@@ -37,8 +37,8 @@ th, td {
 }
 #dashboard-buttons {
     width: 50%;
-    float: right;
-    margin: 10px 20px 20px 20px;
+    float: left;
+    margin: 20px auto;
 }
 #login-frm {
   position: relative;
@@ -79,7 +79,7 @@ th, td {
 }
 #project-issues {
     margin: 50px 20px 20px 20px;
-    width: 40%;
+    width: 50%;
     float: right;
 }
 #project-table {

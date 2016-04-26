@@ -8,15 +8,14 @@
     <h1 class="color-container">{{projectTitle}}</h1>
     <p>Description:</p>
     <h1 class="color-container">{{projectDescription}}</h1>
-    <p>Lead Id:</p>
-    <h1 class="color-container">(current-id: {{currentId}})</h1>
-    <p>Leader: {{projectLeader}}</p>
+    <p>Lead (current-id: {{currentId}})</p>
+    <h1 class="color-container">{{projectLead}}</h1>
     <p>Labels: {{labels}}</p>
     <p>Priorities: {{prioritites}}</p>
 </div>
 
 <div id="project-issues">
-    <h3 class="color-container-title">Project Issues</h3>
+    <h3 class="color-container-title">{{table_title}}</h3>
     <table class="table-responsive" id="project-table">
         <thead>
         <tr>
@@ -35,4 +34,10 @@
         </tr>
         </tbody>
     </table>
+    <div id="dashboard-buttons">
+        <button class="btn-primary" ng-click="previousPage()" ng-disabled="disabled" ng-hide="disabled">Previous Page</button>
+        <button class="btn-primary" ng-click="nextPage()" ng-disabled="disabled" ng-hide="disabled">Next Page</button>
+        <button class="btn-primary" ng-click="showProjectIssues()">Project Issues</button>
+        <button class="btn-primary" ng-click="showAssignedIssues()">Assigned Issues</button>
+    </div>
 </div>
