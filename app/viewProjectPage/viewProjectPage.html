@@ -4,14 +4,18 @@
     <a href="#/projects/{{projectId}}/edit"><button ng-show="showEdit" class="btn-primary">Edit</button></a>
     <a href="#/projects/{{projectId}}/add-issue"><button class="btn-primary" ng-show="showAdd">Add Issue</button></a>
     <h1 class="color-container">{{projectKey}}</h1>
-    <p>Name:</p>
-    <h1 class="color-container">{{projectTitle}}</h1>
-    <p>Description:</p>
-    <h1 class="color-container">{{projectDescription}}</h1>
-    <p>Lead (current-id: {{currentId}})</p>
+    <hr>
+    <p><strong>Name:</strong></p>
+    <h1 class="color-container" id="name">{{projectTitle}}</h1>
+    <hr>
+    <label for="desc">Description:</label>
+    <textarea disabled class="color-container" id="desc">{{projectDescription}}</textarea>
+    <hr>
+    <p><strong>Lead: </strong>(current-id: {{currentId}})</p>
     <h1 class="color-container">{{projectLead}}</h1>
-    <p>Labels: {{labels}}</p>
-    <p>Priorities: {{prioritites}}</p>
+    <hr>
+    <p><strong>Labels:</strong>{{labels}}</p>
+    <p><strong>Priorities: </strong>{{prioritites}}</p>
 </div>
 
 <div id="project-issues">

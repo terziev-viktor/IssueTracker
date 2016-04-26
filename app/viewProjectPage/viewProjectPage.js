@@ -51,15 +51,15 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                 });
             });
             $scope.nextPage = function () {
-                page++;
+                pageNumber++;
                 getIssues();
             };
             $scope.previousPage = function () {
-                page--;
-                if(page > 0) {
+                pageNumber--;
+                if(pageNumber > 0) {
                     getIssues();
                 } else {
-                    page = 1;
+                    pageNumber = 1;
                 }
             };
             $scope.showProjectIssues = function () {

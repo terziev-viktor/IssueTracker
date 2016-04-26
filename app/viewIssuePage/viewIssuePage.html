@@ -1,35 +1,31 @@
 <h1 class="color-container-title">Issue Page</h1>
 <div class="wrapper">
-<form class="frm">
+<div class="frm">
     <button class="btn-primary" id="btn-edit" ng-show="show" ng-click="redirectToEdit()">Edit</button>
     <br>
     <h1 id="issue-page-key" class="color-container">{{IssueKey}}</h1>
-    <fieldset class="form-group">
-        <span>Title:</span>
-        <h2 class="color-container">{{Title}}</h2>
-    </fieldset>
-    <fieldset class="form-group">
-        <span>Description:</span><br>
-        <h2 class="color-container">{{Description}}</h2>
-    </fieldset>
-    <fieldset class="form-group">
-        <span>Assignee:(Id: {{Assigneeid}})</span><br>
-        <h2 class="color-container">{{AssigneeName}}</h2>
-    </fieldset>
-    <fieldset class="form-group">
-        <span>PriorityId:</span><br>
-        <h2 class="color-container">(currentId: {{PriorityId}}) -> {{priorityName}}</h2>
-    </fieldset>
-    <fieldset class="form-group">
-        <span>Due Date:</span><br>
-        <h2 class="color-container">{{duedate}}</h2>
-    </fieldset>
+    <hr>
+    <p><strong>Title:</strong></p>
+    <h2 class="color-container">{{Title}}</h2>
+    <hr>
+    <label for="desc">Description:</label>
+    <textarea disabled class="color-container" id="desc">{{Description}}</textarea>
+    <hr>
+    <p><strong>Assignee:</strong>(Id: {{Assigneeid}})</p>
+    <h2 class="color-container">{{AssigneeName}}</h2>
+    <hr>
+    <p><strong>Priority: </strong>(currentId: {{PriorityId}})</p>
+    <h2 class="color-container">{{priorityName}}</h2>
+    <hr>
+    <p><strong>Due Date:</strong></p>
+    <h2 class="color-container">{{duedate}}</h2>
+    <hr>
     <p>Author: {{author}}</p>
     <p>Project: {{Project}}</p>
     <p>Status: {{status}}</p>
     <p>Labels: {{labels}}</p> <!-- Labels as string separated by comma -->
     <hr>
-</form>
+</div>
 <div class="status-container">
     <p>Avaliable Statuses</p>
     <p ng-show="showClosed">---Closed--- <button ng-click="changeStatusToClosed()" class="btn-primary">Change</button></p>
