@@ -88,10 +88,10 @@ angular.module('IssueTracker.issues', [])
                 });
             return def.promise;
         }
-        function changeIssueStatus(statusId) {
+        function changeIssueStatus(issueId, statusId) {
             var def = $q.defer();
             authentication.refreshCookie();
-            $http.put(BASE_URL + '/Issues/{id}/changestatus?statusId=' + statusId)
+            $http.put(BASE_URL + '/Issues/'+issueId+'/changestatus?statusId=' + statusId)
                 .then(function (response) {
                     def.resolve(response);
                 }, function (error) {
