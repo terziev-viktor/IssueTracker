@@ -11,7 +11,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
 
     .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues', 'identity', 'authentication',
         function($scope, $routeParams, projects, issues, identity, authentication) {
-        var id = $routeParams.id, pageNumber = 1, getIssues;
+        var id = $routeParams.id, pageNumber = 1, getIssues, currentUser;
         projects.getProjectById(id).then(function (response) {
             var labels = [], priorities = [], leadId = response.data.Lead.Id;
             response.data.Labels.forEach(function (e) {
@@ -47,6 +47,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             identity.requestUserProfile().then(function () {
                 identity.getCurrentUser().then(function (user) {
                     $scope.showEdit = (user.Id == leadId);
+                    currentUser = user;
                     $scope.showAdd = (user.isAdmin || user.Id == leadId);
                 });
             });
@@ -74,13 +75,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             };
             $scope.showAssignedIssues = function () {
                 pageNumber = 1;
-                issues.getUserAssignedIssues(12, pageNumber, 'DueDate').then(function (r) {
-                    $scope.issues = r.data.Issues;
-                    $scope.table_title = 'Assigned Issues';
-                    $scope.disabled = false;
-                }, function (error) {
-                    console.log(error);
-                });
+                getIssues(12, 1, 'DueDate');
             }
         }, function (response) {
             console.log(response);
