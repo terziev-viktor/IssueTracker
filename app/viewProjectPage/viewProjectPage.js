@@ -29,13 +29,13 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             $scope.currentId = leadId;
             $scope.lables = labels.join(', ');
             $scope.prioritites = priorities.join(', ');
-            $scope.table_title = 'Assigned Issues';
+            $scope.table_title = 'My Issues';
             getIssues = function () {
                 issues.getUserAssignedIssues(12, pageNumber, 'DueDate').then(function (r) {
-                    if(r.data.Issues != 0) {
-                        $scope.issues = r.data.Issues.filter(function (e) {
-                           return e.Project.Id == $routeParams.id;
-                        });
+                    console.log('assigned issues');
+                    console.log(r);
+                    if(r.data.Issues.length != 0) {
+                        $scope.issues = r.data.Issues;
                     } else {
                         pageNumber--;
                     }
@@ -77,8 +77,8 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             };
             $scope.showAssignedIssues = function () {
                 pageNumber = 1;
-                $scope.table_title = 'Assigned Issues';
-                getIssues(12, 1, 'DueDate');
+                $scope.table_title = 'My Issues';
+                getIssues();
             }
         }, function (response) {
             console.log(response);

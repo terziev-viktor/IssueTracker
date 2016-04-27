@@ -2,11 +2,11 @@
 <form class="frm-container">
     <fieldset class="form-group">
         <label for="assignee-select">Assignee</label>
-        <input class="form-control" required id="assignee-select" ng-model="issue.Assignee">
+        <input class="form-control" required id="assignee-select" placeholder="Assignee for the Issue" ng-model="issue.Assignee">
     </fieldset>
     <fieldset class="form-group">
         <label for="due">Due Date</label>
-        <input type="datetime" required class="form-control" id="due" ng-model="issue.DueDate">
+        <input type="datetime" required class="form-control" placeholder="Issue due date" id="due" ng-model="issue.DueDate">
     </fieldset>
     <fieldset class="form-group">
         <label for="priority-select">Priority</label>
@@ -15,12 +15,12 @@
         </select>
     </fieldset>
     <fieldset class="form-group">
-        <label for="labels-inp">Lables</label>
-        <input type="text" required id="labels-inp" value="{{labels}}" ng-model="issue.labels">
+        <label for="labels-inp">Labels</label>
+        <input type="text" class="form-control" placeholder="Labels for the issue" required id="labels-inp" value="{{labels}}" ng-model="issue.labels">
     </fieldset>
     <fieldset class="form-group">
         <label for="title">Title</label>
-        <input class="form-control" required id="title" ng-model="issue.Title">
+        <input class="form-control" placeholder="Issue Title" required id="title" ng-model="issue.Title">
     </fieldset>
     <fieldset class="form-group">
         <label for="description">Description</label>
