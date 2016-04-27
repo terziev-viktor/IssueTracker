@@ -33,7 +33,9 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             getIssues = function () {
                 issues.getUserAssignedIssues(12, pageNumber, 'DueDate').then(function (r) {
                     if(r.data.Issues != 0) {
-                        $scope.issues = r.data.Issues;
+                        $scope.issues = r.data.Issues.filter(function (e) {
+                           return e.Project.Id == $routeParams.id;
+                        });
                     } else {
                         pageNumber--;
                     }
@@ -75,6 +77,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
             };
             $scope.showAssignedIssues = function () {
                 pageNumber = 1;
+                $scope.table_title = 'Assigned Issues';
                 getIssues(12, 1, 'DueDate');
             }
         }, function (response) {
