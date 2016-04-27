@@ -77,17 +77,6 @@ angular.module('IssueTracker.issues', [])
             });
             return def.promise;
         }
-        function getUsersIssues(orderBy, pageSize, pageNumber) {
-            var def = $q.defer();
-            authentication.refreshCookie();
-            $http.get(BASE_URL + '/Issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
-                .then(function (response) {
-                def.resolve(response);
-            }, function (error) {
-                def.reject(error);
-            });
-            return def.promise;
-        }
         function getIssuesByFilter(filter, pageSize, pageNumber) {
             var def = $q.defer();
             authentication.refreshCookie();
@@ -127,7 +116,6 @@ angular.module('IssueTracker.issues', [])
             editIssue: editIssue,
             getIssueComments: getIssueComments,
             addIssueComment: addIssueComment,
-            getUsersIssues: getUsersIssues,
             getIssuesByFilter: getIssuesByFilter,
             changeIssueStatus: changeIssueStatus,
             getUserAssignedIssues: getUserAssignedIssues

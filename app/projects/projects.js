@@ -60,7 +60,7 @@ angular.module('IssueTracker.projects', [])
         function getProjectsByFilter(filter, pageSize, pageNumber) {
             var def = $q.defer();
             authentication.refreshCookie();
-            $http.get(BASE_URL + '/Projects/?pageSize='+pageSize+'&pageNumber='+pageNumber+'&' + filter).then(function (response) {
+            $http.get(BASE_URL + '/Projects?pageSize='+pageSize+'&pageNumber='+pageNumber+'&' + filter).then(function (response) {
                 def.resolve(response);
             }, function (error) {
                 def.reject(error)

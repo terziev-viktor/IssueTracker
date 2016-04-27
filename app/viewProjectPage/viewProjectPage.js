@@ -63,9 +63,8 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                 }
             };
             $scope.showProjectIssues = function () {
-                getIssues = issues.getProjectIssues;
                 pageNumber = 1;
-                getIssues(response.data.Id).then(function (data) {
+                issues.getProjectIssues(response.data.Id).then(function (data) {
                     $scope.issues = data.data;
                     $scope.table_title = 'Project Issues';
                     $scope.disabled = true;

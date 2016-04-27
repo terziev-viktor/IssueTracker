@@ -20,6 +20,7 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             $scope.Title = response.Title;
             $scope.Description = response.Description;
             $scope.Project = response.Project.Name;
+            $scope.proejectId = response.Project.Id;
             $scope.Assigneeid = response.Assignee.Id;
             $scope.AssigneeName = response.Assignee.Username;
             $scope.PriorityId = response.Priority.Id;

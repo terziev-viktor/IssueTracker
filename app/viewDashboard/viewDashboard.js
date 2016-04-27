@@ -14,17 +14,8 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         if(!authentication.isLoggedIn()) {
             $location.path('/welcome');
         }
-        var btnLogout = $('#btn-logout'), btnProfile = $('#btn-profile');
-        btnLogout.show(500);
-        btnLogout.on('click', function () {
-            authentication.logout();
-        });
-        btnProfile.show(500);
-        btnProfile.on('click', function () {
-            $location.path('/profile/password');
-        });
         function loadUserIssues() {
-            issues.getUsersIssues('DueDate', 12, page).then(function (response) {
+            issues.getUserAssignedIssues(12, 1, 'DueDate').then(function (response) {
                 if(response.data.Issues != 0) {
                     $scope.issues = response.data.Issues;
                 } else {
@@ -36,11 +27,8 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         }
         loadUserIssues();
         identity.getCurrentUser().then(function (response) {
-            console.log('get current user response:');
-            console.log(response);
             projects.getProjectsByFilter('Lead.Id=' + response.Id, 12, 1).then(function (response) {
                 $scope.userProjects = response.data;
-                console.log(response);
             }, function (response) {
                 console.log(response);
             })
@@ -54,5 +42,14 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
             if(page > 0) {
                 loadUserIssues();
             } else {page = 1;}
-        }
+        };
+        var btnLogout = $('#btn-logout'), btnProfile = $('#btn-profile');
+        btnLogout.show(500);
+        btnLogout.on('click', function () {
+            authentication.logout();
+        });
+        btnProfile.show(500);
+        btnProfile.on('click', function () {
+            $location.path('/profile/password');
+        });
     }]);
