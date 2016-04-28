@@ -29,19 +29,34 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
                     });
                 }
                 loadUserIssues();
-                projects.getProjectsByFilter("Lead.Id=\""+user.Id+"\"", 8, 1).then(function (response) {
-                    $scope.userProjects = response.data.Projects;
-                }, function (response) {
-                    console.log(response);
-                });
+                function loadAllProjects() {
+                    projects.getProjectsByFilter("Lead.Id=\""+user.Id+"\"", 8, 1).then(function (response) {
+                        if(response.data.Projects.length != 0) {
+                            $scope.userProjects = response.data.Projects;
+                            $scope.projectsFound = undefined;
+                        } else {
+                            $scope.projectsFound = "You don't have any projects yet..."
+                        }
+                    }, function (response) {
+                        console.log(response);
+                    });
+                }
+                loadAllProjects();
                 $scope.searchProject = function() {
                     if($scope.search_value) {
                         projects.getProjectsByFilter("Name.contains(\""+$scope.search_value+"\") and Lead.Id=\"" + user.Id + "\"", 100, 1)
                             .then(function (response) {
-                            $scope.userProjects = response.data.Projects;
+                                if(response.data.Projects.length != 0) {
+                                    $scope.userProjects = response.data.Projects;
+                                    $scope.projectsFound = undefined;
+                                } else {
+                                    $scope.projectsFound = 'No projects for that search...';
+                                }
                         }, function (response) {
                             console.log(response);
                         })
+                    } else {
+                        loadAllProjects();
                     }
                 };
                 $scope.nextPage = function () {
