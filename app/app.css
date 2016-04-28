@@ -8,6 +8,9 @@ th, td {
     border: 1px solid rgb(231, 231, 231);
     padding: 5px;
 }
+h3 {
+    font-family: "Eras Demi ITC";
+}
 /* enable absolute positioning */
 .inner-addon {
     position: relative;

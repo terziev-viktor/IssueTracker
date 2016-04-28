@@ -46,8 +46,8 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
                     if($scope.search_value) {
                         projects.getProjectsByFilter("Name.contains(\""+$scope.search_value+"\") and Lead.Id=\"" + user.Id + "\"", 100, 1)
                             .then(function (response) {
+                                $scope.userProjects = response.data.Projects;
                                 if(response.data.Projects.length != 0) {
-                                    $scope.userProjects = response.data.Projects;
                                     $scope.projectsFound = undefined;
                                 } else {
                                     $scope.projectsFound = 'No projects for that search...';
