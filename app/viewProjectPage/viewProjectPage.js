@@ -37,7 +37,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                     $scope.prioritites = priorities.join(', ');
                     $scope.table_title = 'Assigned Issues';
                     getIssues = function () {
-                        issues.getIssuesByFilter('Assignee.Id=="' + user.Id + '"', 12, 1).then(function (r) {
+                        issues.getIssuesByFilter('Assignee.Id="' + user.Id + '" and Project.Id='+ response.data.Id, 12, 1).then(function (r) {
                             console.log('Issues by filter');
                             console.log(r);
                             if(r.data.Issues.length != 0) {
