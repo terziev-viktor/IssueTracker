@@ -80,7 +80,7 @@ angular.module('IssueTracker.issues', [])
         function getIssuesByFilter(filter, pageSize, pageNumber) {
             var def = $q.defer();
             authentication.refreshCookie();
-            $http.get(BASE_URL + '/Issues/?pageSize='+pageSize+'&pageNumber='+pageNumber+'&' + filter)
+            $http.get(BASE_URL + '/Issues?filter='+filter+'&pageSize='+pageSize+'&pageNumber='+pageNumber)
                 .then(function (response) {
                     def.resolve(response);
                 }, function (error) {

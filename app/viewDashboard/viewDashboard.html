@@ -2,6 +2,11 @@
 <div id="dashboard-main">
     <a href="#/projects/add"><button class="btn-primary">Add Project</button></a>
 <h2>Affiliated Projects</h2>
+    <div class="inner-addon left-addon">
+        <span class="glyphicon glyphicon-user"></span>
+        <input type="text" class="form-control" id="search-bar" placeholder="search for project" ng-model="search_value"/>
+        <button class="btn-primary" id="btn-search-project" ng-click="searchProject()">Go</button>
+    </div>
     <hr>
 <div ng-repeat="userProject in userProjects">
     <img src="img/project-ico.gif" alt="ico.gif" width="20px" height="20px" class="project-image">
@@ -10,7 +15,7 @@
 </div>
 </div>
 <div id="dashboard-second">
-    <h3 class="color-container-title">My Issues</h3>
+    <h3 class="color-container-title">Issues Assigned To Me</h3>
     <table class="table-responsive" id="dashboard-table">
      <thead>
      <tr>

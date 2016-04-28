@@ -25,7 +25,6 @@ angular.module('IssueTracker.users.identity', [])
                 },
                 requestUserProfile: function() {
                     var userProfileDeferred = $q.defer();
-
                     $http.get(BASE_URL + '/Users/me')
                         .then(function(response) {
                             currentUser = response.data;

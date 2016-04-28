@@ -15,21 +15,18 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
         var issueId = $routeParams.id, currentUser, response, loadIssue;
         issues.getIssueById(issueId).then(function (r) {
             response = r.data;
-            loadIssue = function () {
-                $scope.IssueKey = response.IssueKey;
-                $scope.Title = response.Title;
-                $scope.Description = response.Description;
-                $scope.Project = response.Project.Name;
-                $scope.proejectId = response.Project.Id;
-                $scope.Assigneeid = response.Assignee.Id;
-                $scope.AssigneeName = response.Assignee.Username;
-                $scope.PriorityId = response.Priority.Id;
-                $scope.priorityName = response.Priority.Name;
-                $scope.author = response.Author.Username;
-                $scope.duedate = response.DueDate;
-                $scope.status = response.Status.Name;
-            };
-            loadIssue();
+            $scope.IssueKey = response.IssueKey;
+            $scope.Title = response.Title;
+            $scope.Description = response.Description;
+            $scope.Project = response.Project.Name;
+            $scope.proejectId = response.Project.Id;
+            $scope.Assigneeid = response.Assignee.Id;
+            $scope.AssigneeName = response.Assignee.Username;
+            $scope.PriorityId = response.Priority.Id;
+            $scope.priorityName = response.Priority.Name;
+            $scope.author = response.Author.Username;
+            $scope.duedate = response.DueDate;
+            $scope.status = response.Status.Name;
             $scope.showClosed = response.Status.Name != "Closed";
             $scope.showInProgress = response.Status.Name != "InProgress";
             $scope.showOpen = response.Status.Name != "Open";
@@ -74,7 +71,8 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 $scope.showInProgress = false;
                 $scope.showOpen = true;
                 $scope.showResolved = false;
-                loadIssue();
+                notificationer.notify('Status Changed to CLOSED.');
+                $scope.status = 'Closed';
             };
             $scope.changeStatusToInProgress = function () {
                 issues.changeIssueStatus(issueId, 2).then(function (r) {
@@ -86,7 +84,8 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 $scope.showInProgress = false;
                 $scope.showOpen = false;
                 $scope.showResolved = true;
-                loadIssue();
+                notificationer.notify('Status Changed to IN PROGRESS.');
+                $scope.status = 'In Progress';
             };
             $scope.changeStatusToOpen = function () {
                 issues.changeIssueStatus(issueId, 1).then(function (r) {
@@ -98,7 +97,8 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 $scope.showInProgress = true;
                 $scope.showOpen = false;
                 $scope.showResolved = true;
-                loadIssue();
+                notificationer.notify('Status Changed to OPEN.');
+                $scope.status = 'Open';
             };
             $scope.changeStatusToResolved = function () {
                 issues.changeIssueStatus(issueId, 4).then(function (r) {
@@ -110,7 +110,8 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                 $scope.showInProgress = false;
                 $scope.showOpen = true;
                 $scope.showResolved = false;
-                loadIssue();
+                notificationer.notify('Status Changed to RESOLVED.');
+                $scope.status = 'Resolved';
             };
             // ------------------------------------------------------
             var labels = [];

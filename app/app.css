@@ -8,6 +8,29 @@ th, td {
     border: 1px solid rgb(231, 231, 231);
     padding: 5px;
 }
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0;}
+.right-addon .glyphicon { right: 0;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+#search-bar {
+    width: 80%;
+    display: inline-block;
+}
 .project-name {
     display: inline-block;
     margin-left: 20px;
@@ -40,6 +63,11 @@ th, td {
 }
 .navbar {
   margin-bottom: 0;
+}
+#btn-search-project {
+    width: 18%;
+    height: 33px;
+    border-radius: 3px;
 }
 #btn-edit {
     float: left;
