@@ -17,15 +17,12 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
     authentication.register(userData).then(function (response) {
       console.log(response);
         authentication.getToken({'Username': userData.Email, 'Password': userData.Password}).then(function (response) {
-            console.log('get token response: ');
-            console.log(response);
             notificationer.notify('Registration successful. Welcome to your Dashboard!');
             $location.path('/dashboard');
         }, function (err) {
-            notificationer.notify(err.data.error_description);
+            console.log(err);
         });
     }, function (error) {
-      notificationer.notify(error.data.error_description);
       console.log(error);
     });
   };
@@ -34,7 +31,6 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
     var defer = $q.defer();
     authentication.getToken({'Username': userData.Username, 'Password': userData.Password}).then(function (response) {
         defer.resolve(response);
-        console.log(response);
         notificationer.notify('Login successful. Welcome to your Dashboard!');
         $location.path('/dashboard');
       }, function(error) {
