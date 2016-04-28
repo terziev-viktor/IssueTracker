@@ -5,7 +5,6 @@ angular.module('IssueTracker.users.authentication', [])
         var AUTHENTICATION_COOKIE_KEY = '!__Authentication_Cookie_Key__!';
 
         function preserveUserData(data) {
-            console.log('access_token = ' + data.data.access_token);
             var accessToken = data.data.access_token;
             $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
             $cookies.put(AUTHENTICATION_COOKIE_KEY, accessToken);
