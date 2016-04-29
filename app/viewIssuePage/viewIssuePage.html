@@ -1,37 +1,35 @@
 <h1 class="color-container-title">Issue Page</h1>
 <div class="wrapper">
 <div class="frm">
-    <button class="btn-primary" id="btn-edit" ng-show="show" ng-click="redirectToEdit()">Edit</button>
+    <button class="btn-primary" id="btn-edit" ng-show="show_edit" ng-click="redirectToEdit()">Edit</button>
     <br>
-    <h1 id="issue-page-key" class="color-container">{{IssueKey}}</h1>
+    <h1 id="issue-page-key" class="color-container">{{Issue.IssueKey}}</h1>
     <hr>
     <p><strong>Title:</strong></p>
-    <h2 class="color-container">{{Title}}</h2>
+    <h2 class="color-container">{{Issue.Title}}</h2>
     <hr>
     <label for="desc">Description:</label>
-    <textarea disabled class="color-container" id="desc">{{Description}}</textarea>
+    <textarea disabled class="color-container" id="desc">{{Issue.Description}}</textarea>
     <hr>
-    <p><strong>Assignee:</strong>(Id: {{Assigneeid}})</p>
-    <h2 class="color-container">{{AssigneeName}}</h2>
+    <p><strong>Assignee:</strong>(Id: {{Issue.Assignee.Id}})</p>
+    <h2 class="color-container">{{Issue.Assignee.Username}}</h2>
     <hr>
-    <p><strong>Priority: </strong>(currentId: {{PriorityId}})</p>
-    <h2 class="color-container">{{priorityName}}</h2>
+    <p><strong>Priority: </strong>(currentId: {{Issue.Priority.Id}})</p>
+    <h2 class="color-container">{{Issue.Priority.Name}}</h2>
     <hr>
     <p><strong>Due Date:</strong></p>
-    <h2 class="color-container">{{duedate}}</h2>
+    <h2 class="color-container">{{Issue.DueDate}}</h2>
     <hr>
-    <p>Author: {{author}}</p>
-    <p>Project: <a href="#/projects/{{proejectId}}">{{Project}}</a></p>
-    <p>Status: {{status}}</p>
+    <p>Author: {{Issue.Author.Username}}</p>
+    <p>Project: <a href="#/projects/{{Issue.Project.Id}}">{{Issue.Project.Name}}</a></p>
+    <p>Status: {{Issue.Status.Name}}</p>
     <p>Labels: {{labels}}</p> <!-- Labels as string separated by comma -->
     <hr>
 </div>
-<div class="status-container">
-    <p>Avaliable Statuses</p>
-    <p ng-show="showClosed">---Closed--- <button ng-click="changeStatusToClosed()" class="btn-primary">Change</button></p>
-    <p ng-show="showInProgress">---inProgress--- <button ng-click="changeStatusToInProgress()" class="btn-primary">Change</button></p>
-    <p ng-show="showOpen">---Open--- <button ng-click="changeStatusToOpen()" class="btn-primary">Change</button></p>
-    <p ng-show="showResolved">---Resolve--- <button ng-click="changeStatusToResolved()" class="btn-primary">Change</button></p>
+<div class="status-container" ng-show="show_status_container">
+    <p><strong></strorn><span ng-show="noStatuses">--No--</span>Avaliable Statuses</strong></p>
+    <p ng-repeat="Statuses in availableStatuses" ng-show="{{Statuses.Id}}">---{{Statuses.Name}}--- <button ng-click="changeStatus(Statuses)" class="btn-primary">Change</button></p>
+
     <hr>
 </div>
 
