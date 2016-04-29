@@ -41,7 +41,6 @@ angular.module('IssueTracker.addProject', ['ngRoute'])
                     }
                 });
                 projects.postProject(data).then(function (response) {
-                    console.log(response);
                     $location.path('/projects/' + response.data.Id);
                 }, function (res) {
                     console.log(res);

@@ -12,7 +12,6 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
     .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', 'users', 'issues', '$location', 'notificationer',
         function($scope, $routeParams, projects, users, issues, $location, notificationer) {
             projects.getProjectById($routeParams.id).then(function (res) {
-                console.log(res);
                 $scope.priorities = res.data.Priorities;
             });
         $scope.createIssue = function (issue) {
@@ -35,7 +34,6 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
                 } else {
                     data.AssigneeId = res.data[0].Id;
                     issues.addIssue(data).then(function (res) {
-                        console.log(res);
                         notificationer.notify('Issue Created!');
                         $location.path('/projects/' + $routeParams.id);
                     }, function (res) {
