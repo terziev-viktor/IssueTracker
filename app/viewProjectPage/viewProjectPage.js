@@ -25,21 +25,12 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                     response.data.Priorities.forEach(function (e) {
                         priorities.push(e.Name);
                     });
-
-                    $scope.projectId = response.data.Id;
-                    $scope.projectKey = response.data.ProjectKey;
-                    $scope.projectTitle = response.data.Name;
-                    $scope.projectLead = response.data.Lead.Username;
-                    $scope.projectLeader = response.data.Lead.Username;
-                    $scope.projectDescription = response.data.Description;
-                    $scope.currentId = leadId;
+                    $scope.project = response.data;
                     $scope.labels = labels.join(', ');
                     $scope.prioritites = priorities.join(', ');
                     $scope.table_title = 'Assigned Issues';
                     getIssues = function () {
                         issues.getIssuesByFilter('Assignee.Id="' + user.Id + '" and Project.Id='+ response.data.Id, 12, 1).then(function (r) {
-                            console.log('Issues by filter');
-                            console.log(r);
                             if(r.data.Issues.length != 0) {
                                 $scope.issues = r.data.Issues;
                             } else {

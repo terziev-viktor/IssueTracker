@@ -3,16 +3,16 @@
 <h1>{{projectKey}}</h1>
     <a href="#/projects/{{projectId}}/edit"><button ng-show="showEdit" class="btn-primary">Edit</button></a>
     <a href="#/projects/{{projectId}}/add-issue"><button class="btn-primary" ng-show="showAdd">Add Issue</button></a>
-    <h1 class="color-container">{{projectKey}}</h1>
+    <h1 class="color-container">{{project.ProjectKey}}</h1>
     <hr>
     <p><strong>Name:</strong></p>
-    <h1 class="color-container" id="name">{{projectTitle}}</h1>
+    <h1 class="color-container" id="name">{{project.Name}}</h1>
     <hr>
     <label for="desc">Description:</label>
-    <textarea disabled class="color-container" id="desc">{{projectDescription}}</textarea>
+    <textarea disabled class="color-container" id="desc">{{project.Description}}</textarea>
     <hr>
-    <p><strong>Lead: </strong>(current-id: {{currentId}})</p>
-    <h1 class="color-container">{{projectLead}}</h1>
+    <p><strong>Lead: </strong>(current-id: {{project.Lead.Id}})</p>
+    <h1 class="color-container">{{project.Lead.Username}}</h1>
     <hr>
     <p><strong>Labels: </strong>{{labels}}</p>
     <p><strong>Priorities: </strong>{{prioritites}}</p>
