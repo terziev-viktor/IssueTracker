@@ -50,10 +50,21 @@ angular.module('IssueTracker.users', [])
 
             return defer.promise;
         }
+        function getUserByFilter(filter) {
+            var defer = $q.defer();
+            authentication.refreshCookie();
+            $http.get(BASE_URL + '/Users?filter='+filter).then(function (users) {
+                defer.resolve(users);
+            }, function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
+        }
         return {
             getAllUsers: getAllUsers,
             getCurrentUser: getCurrentUser,
             makeAdmin: makeAdmin,
-            changePassword: changePassword
+            changePassword: changePassword,
+            getUserByFilter: getUserByFilter
         }
     }]);

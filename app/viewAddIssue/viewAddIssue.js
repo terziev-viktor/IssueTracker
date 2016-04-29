@@ -29,20 +29,20 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
                 })
             });
             data.PriorityId = issue.priority;
-            users.getAllUsers().then(function (res) {
-                res.data.forEach(function (e) {
-                    if(e.Username == issue.Assignee) {
-                        data.AssigneeId = e.Id;
-                    }
-                });
-                issues.addIssue(data).then(function (res) {
-                    console.log(res);
-                    notificationer.notify('Issue Created!');
-                    $location.path('/projects/' + $routeParams.id);
-                }, function (res) {
-                    notificationer.notify('Error with creating the issue');
-                    console.log(res);
-                });
+            users.getUserByFilter('Username=="' + issue.Assignee + '"').then(function (res) {
+                if(res.data.length == 0) {
+                    notificationer.notify('User ' + issue.Assignee + 'can not be found.');
+                } else {
+                    data.AssigneeId = res.data[0].Id;
+                    issues.addIssue(data).then(function (res) {
+                        console.log(res);
+                        notificationer.notify('Issue Created!');
+                        $location.path('/projects/' + $routeParams.id);
+                    }, function (res) {
+                        notificationer.notify('Error with creating the issue');
+                        console.log(res);
+                    });
+                }
             }, function (e) {
                 console.log("Couldn't get users");
                 console.log(e);
