@@ -91,7 +91,7 @@ angular.module('IssueTracker.issues', [])
         function changeIssueStatus(issueId, statusId) {
             var def = $q.defer();
             authentication.refreshCookie();
-            $http.put(BASE_URL + '/Issues/'+issueId+'/changestatus?statusId=' + statusId)
+            $http.put(BASE_URL + '/Issues/'+issueId+'/changestatus?statusid=' + statusId)
                 .then(function (response) {
                     def.resolve(response);
                 }, function (error) {
