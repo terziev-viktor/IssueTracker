@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('IssueTracker.users.password', ['ngRoute'])
+angular.module('IssueTracker.users.profile', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/profile/password', {
-            templateUrl: 'viewChangePass/viewChangePass.html',
+            templateUrl: 'viewProfile/viewProfile.html',
             controller: 'ChangePassCtrl'
         });
     }])

@@ -13,7 +13,7 @@ angular.module('IssueTracker', [
   'IssueTracker.users',
   'IssueTracker.users.authentication',
   'IssueTracker.users.identity',
-  'IssueTracker.users.password',
+  'IssueTracker.users.profile',
   'IssueTracker.projects',
   'IssueTracker.projects.edit',
   'IssueTracker.projectPage',
