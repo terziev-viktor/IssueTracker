@@ -18,10 +18,7 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
             $scope.availableStatuses = Issue.AvailableStatuses;
             $scope.noStatuses = Issue.AvailableStatuses.length == 0;
             $scope.Issue = Issue;
-            $scope.showClosed = Issue.Status.Name != "Closed";
-            $scope.showInProgress = Issue.Status.Name != "InProgress";
-            $scope.showOpen = Issue.Status.Name != "Open";
-            $scope.showResolved = Issue.Status.Name != "Resolved";
+            $scope.status = Issue.Status.Name;
             function showComments() {
                 issues.getIssueComments(issueId).then(function (response) {
                     $scope.comments = response.data;
