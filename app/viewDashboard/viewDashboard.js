@@ -17,6 +17,7 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
         authentication.refreshCookie();
         identity.requestUserProfile().then(function () {
             identity.getCurrentUser().then(function (user) {
+                $scope.show_add_project = user.isAdmin;
                 function loadUserIssues() {
                     issues.getUserAssignedIssues(12, 1, 'DueDate').then(function (response) {
                         if(response.data.Issues != 0) {
@@ -35,7 +36,7 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
                             $scope.userProjects = response.data.Projects;
                             $scope.projectsFound = undefined;
                         } else {
-                            $scope.projectsFound = "You don't have any projects yet..."
+                            $scope.projectsFound = "You have no projects yet...";
                         }
                     }, function (response) {
                         console.log(response);
@@ -50,7 +51,7 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
                                 if(response.data.Projects.length != 0) {
                                     $scope.projectsFound = undefined;
                                 } else {
-                                    $scope.projectsFound = 'No projects for that search...';
+                                    $scope.projectsFound = 'No results for "' + $scope.search_value + '"...';
                                 }
                         }, function (response) {
                             console.log(response);
