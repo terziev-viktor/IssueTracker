@@ -15,8 +15,7 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
                 $scope.priorities = res.data.Priorities;
             });
             $scope.addSuggestions = function (l) {
-                labels.getLabels('"' + l + '"').then(function (res) {
-                    console.log('sugestions');
+                labels.getLabels(l).then(function (res) {
                     console.log(res);
                     $scope.suggestions = res.data;
                 })

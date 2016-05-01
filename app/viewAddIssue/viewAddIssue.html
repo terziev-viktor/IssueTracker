@@ -18,7 +18,7 @@
         <label for="labels-inp">Labels</label>
         <input type="text" list="suggestions" class="form-control" ng-change="addSuggestions(issue.labels)" placeholder="Labels for the issue" required id="labels-inp" ng-model="issue.labels">
         <datalist id="suggestions">
-            <option ng-repeat="suggestion in suggestions" value="{{suggestion}}">
+            <option ng-repeat="suggestion in suggestions" value="{{suggestion.Name}}">
         </datalist>
     </fieldset>
     <fieldset class="form-group">

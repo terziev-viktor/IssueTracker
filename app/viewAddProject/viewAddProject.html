@@ -14,7 +14,10 @@
     </fieldset>
     <fieldset class="form-group">
         <label for="label">Label</label>
-        <input type="text" class="form-control" id="label" ng-model="project.label">
+        <input type="text" list="suggestions" ng-change="addSuggestions(project.label)" class="form-control" id="label" ng-model="project.label">
+        <datalist id="suggestions">
+            <option ng-repeat="suggestion in suggestions" value="{{suggestion.Name}}">
+        </datalist>
     </fieldset>
     <fieldset class="form-group">
         <label for="name">Project Name</label>

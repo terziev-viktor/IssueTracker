@@ -35,7 +35,7 @@ angular.module('IssueTracker.welcome', ['ngRoute'])
         $location.path('/dashboard');
       }, function(error) {
         defer.reject(error);
-        notificationer.notify(error.data.error_description);
+        notificationer.notify('Login unsuccessful... ;(');
         console.log(error);
       });
 

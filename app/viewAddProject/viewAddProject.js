@@ -11,21 +11,25 @@ angular.module('IssueTracker.addProject', ['ngRoute'])
 
     .controller('AddProjectsCtrl', ['$scope','projects', 'users', '$location',
         function($scope, projects, users, $location) {
-
-        $scope.createProject = function (project) {
-            console.log(project);
-            var data = {}, lId = 1, pId = 1;
-            data.Name = project.name;
-            data.Description = project.description;
-            data.ProjectKey = project.key;
-            data.Labels = [];
-            project.label.split(', ').forEach(function (e) {
-                data.Labels.push({
-                    Id: lId,
-                    Name: e
+            $scope.addSuggestions = function (l) {
+                labels.getLabels(l).then(function (res) {
+                    $scope.suggestions = res.data;
+                })
+            };
+            $scope.createProject = function (project) {
+                console.log(project);
+                var data = {}, lId = 1, pId = 1;
+                data.Name = project.name;
+                data.Description = project.description;
+                data.ProjectKey = project.key;
+                data.Labels = [];
+                project.label.split(', ').forEach(function (e) {
+                    data.Labels.push({
+                        Id: lId,
+                        Name: e
+                    });
+                    lId++;
                 });
-                lId++;
-            });
             data.Priorities = [];
             project.priorities.split(', ').forEach(function (e) {
                 data.Priorities.push({
