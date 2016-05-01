@@ -13,7 +13,17 @@ angular.module('IssueTracker.labels', [])
             return def.promise;
         }
 
+        function getAllLabels() {
+            var def = $q.defer();
+            $http.get(BASE_URL + '/Labels').then(function (success) {
+                def.resolve(success);
+            }, function(error) {
+                def.reject(error)
+            });
+            return def.promise;
+        }
         return {
-            getLabels: getLabels
+            getLabels: getLabels,
+            getAllLabels: getAllLabels
         }
     }]);

@@ -16,7 +16,10 @@
     </fieldset>
     <fieldset class="form-group">
         <label for="labels-inp">Labels</label>
-        <input type="text" class="form-control" placeholder="Labels for the issue" required id="labels-inp" value="{{labels}}" ng-model="issue.labels">
+        <input type="text" list="suggestions" class="form-control" ng-change="addSuggestions(issue.labels)" placeholder="Labels for the issue" required id="labels-inp" ng-model="issue.labels">
+        <datalist id="suggestions">
+            <option ng-repeat="suggestion in suggestions" value="{{suggestion}}">
+        </datalist>
     </fieldset>
     <fieldset class="form-group">
         <label for="title">Title</label>

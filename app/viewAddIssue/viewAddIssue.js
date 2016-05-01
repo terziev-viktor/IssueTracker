@@ -9,11 +9,18 @@ angular.module('IssueTracker.addIssue', ['ngRoute'])
         });
     }])
 
-    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', 'users', 'issues', '$location', 'notificationer',
-        function($scope, $routeParams, projects, users, issues, $location, notificationer) {
+    .controller('addIssueCtrl', ['$scope', '$routeParams', 'projects', 'users', 'issues', '$location', 'notificationer', 'labels',
+        function($scope, $routeParams, projects, users, issues, $location, notificationer, labels) {
             projects.getProjectById($routeParams.id).then(function (res) {
                 $scope.priorities = res.data.Priorities;
             });
+            $scope.addSuggestions = function (l) {
+                labels.getLabels('"' + l + '"').then(function (res) {
+                    console.log('sugestions');
+                    console.log(res);
+                    $scope.suggestions = res.data;
+                })
+            };
         $scope.createIssue = function (issue) {
             var data = {};
             data.Title = issue.Title;
