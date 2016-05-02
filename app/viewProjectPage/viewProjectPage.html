@@ -18,8 +18,8 @@
     <p><strong>Priorities: </strong>{{prioritites}}</p>
 </div>
 
-<div id="project-issues">
-    <h3 class="color-container-title">{{table_title}}</h3>
+<div id="project-issues" class="panel panel-success">
+    <h3 class="color-container-title panel-heading">{{table_title}}</h3>
     <table class="table-responsive" id="project-table">
         <thead>
         <tr>
@@ -38,6 +38,7 @@
         </tr>
         </tbody>
     </table>
+
     <div id="dashboard-buttons">
         <button class="btn-primary" ng-click="previousPage()" ng-disabled="disabled" ng-hide="disabled">Previous Page</button>
         <button class="btn-primary" ng-click="nextPage()" ng-disabled="disabled" ng-hide="disabled">Next Page</button>

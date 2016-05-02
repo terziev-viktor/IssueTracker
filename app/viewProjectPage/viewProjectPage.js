@@ -11,7 +11,7 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
 
     .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues', 'identity', 'authentication',
         function($scope, $routeParams, projects, issues, identity, authentication) {
-        var id = $routeParams.id, pageNumber = 1, getIssues;
+        var id = $routeParams.id, pageNumber = 1, getIssues, project_issues = $('#project-issues');
         projects.getProjectById(id).then(function (response) {
             var labels = [], priorities = [], leadId = response.data.Lead.Id;
             authentication.refreshCookie();
@@ -31,11 +31,13 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                     $scope.table_title = 'Assigned Issues';
                     getIssues = function () {
                         issues.getIssuesByFilter('Assignee.Id="' + user.Id + '" and Project.Id='+ response.data.Id, 12, 1).then(function (r) {
-                            if(r.data.Issues.length != 0) {
-                                $scope.issues = r.data.Issues;
-                            } else {
+                            if(r.data.Issues.length == 0){
                                 pageNumber--;
+                                project_issues.removeClass('panel-success').addClass('panel-warning');
+                            } else {
+                                project_issues.removeClass('panel-warning').addClass('panel-success');
                             }
+                            $scope.issues = r.data.Issues;
                             $scope.disabled = false;
                         }, function (error) {
                             console.log(error);
@@ -61,6 +63,11 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
                             $scope.issues = data.data;
                             $scope.table_title = 'Project Issues';
                             $scope.disabled = true;
+                            if(data.data.length == 0) {
+                                project_issues.removeClass('panel-success').addClass('panel-warning');
+                            } else {
+                                project_issues.removeClass('panel-warning').addClass('panel-success');
+                            }
                         }, function (error) {
                             console.log(error);
                         });
