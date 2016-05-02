@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('IssueTracker.labels', [])
-    .factory('labels', ['$http', '$q', 'BASE_URL', 'projects', function IssuesFactory($http, $q, BASE_URL) {
+    .factory('labels', ['$http', '$q', 'BASE_URL', 'authentication', function IssuesFactory($http, $q, BASE_URL, authentication) {
 
         function getLabels(filter) {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.get(BASE_URL + '/Labels/?filter=' + filter).then(function (success) {
                 def.resolve(success);
             }, function(error) {
@@ -15,6 +16,7 @@ angular.module('IssueTracker.labels', [])
 
         function getAllLabels() {
             var def = $q.defer();
+            authentication.refreshCookie();
             $http.get(BASE_URL + '/Labels').then(function (success) {
                 def.resolve(success);
             }, function(error) {

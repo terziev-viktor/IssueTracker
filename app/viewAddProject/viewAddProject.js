@@ -9,8 +9,8 @@ angular.module('IssueTracker.addProject', ['ngRoute'])
         });
     }])
 
-    .controller('AddProjectsCtrl', ['$scope','projects', 'users', '$location',
-        function($scope, projects, users, $location) {
+    .controller('AddProjectsCtrl', ['$scope','projects', 'users', '$location', 'labels',
+        function($scope, projects, users, $location, labels) {
             $scope.addSuggestions = function (l) {
                 labels.getLabels(l).then(function (res) {
                     $scope.suggestions = res.data;
