@@ -19,7 +19,7 @@ angular.module('IssueTracker.dashboard', ['ngRoute'])
             identity.getCurrentUser().then(function (user) {
                 $scope.show_add_project = user.isAdmin;
                 function loadUserIssues() {
-                    issues.getUserAssignedIssues(12, 1, 'DueDate').then(function (response) {
+                    issues.getUserAssignedIssues(12, 1, 'DueDate desc').then(function (response) {
                         if(response.data.Issues != 0) {
                             $scope.issues = response.data.Issues;
                         } else {
