@@ -11,7 +11,6 @@ angular.module('IssueTracker.users.profile', ['ngRoute'])
         authentication.refreshCookie();
         identity.requestUserProfile().then(function () {
             identity.getCurrentUser().then(function (u) {
-                console.log(u);
                 $scope.user = u;
                 if(u.isAdmin) {
                     $scope.isAdmin = 'Admin';

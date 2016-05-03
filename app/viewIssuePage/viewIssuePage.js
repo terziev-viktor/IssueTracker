@@ -12,7 +12,7 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
     .controller('IssuePageCtrl', ['$scope', '$routeParams', 'issues', 'projects', 'notificationer', 'identity', '$location',
         function($scope, $routeParams, issues, projects, notificationer, identity, $location) {
         notificationer.notify('Issue Page');
-        var issueId = $routeParams.id, currentUser, Issue, loadIssue;
+        var issueId = $routeParams.id, currentUser, Issue;
         issues.getIssueById(issueId).then(function (r) {
             Issue = r.data;
             $scope.availableStatuses = Issue.AvailableStatuses;
@@ -49,10 +49,8 @@ angular.module('IssueTracker.issuePage', ['ngRoute'])
                     notificationer.notify('Only Logged in user who is either a project leader or has a assigned issue in this project can add comments!')
                 });
             };
-            // TODO: Issue status can not be changed? Don't know why ;(
             $scope.changeStatus = function (status) {
                 issues.changeIssueStatus(issueId, status.Id).then(function (r) {
-                    console.log(r);
                     notificationer.notify('Status Changed to ' + status.Name);
                     $scope.status = status.Name;
                 }, function (r) {

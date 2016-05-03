@@ -11,9 +11,9 @@ angular.module('IssueTracker.projectPage', ['ngRoute'])
 
     .controller('ProjectPageCtrl', ['$scope', '$routeParams', 'projects', 'issues', 'identity', 'authentication',
         function($scope, $routeParams, projects, issues, identity, authentication) {
-        var id = $routeParams.id, pageNumber = 1, getIssues, project_issues = $('#project-issues');
+        var id = $routeParams.id, pageNumber = 1, getIssues, project_issues = $('#project-issues'),
+            labels = [], priorities = [], leadId = response.data.Lead.Id;
         projects.getProjectById(id).then(function (response) {
-            var labels = [], priorities = [], leadId = response.data.Lead.Id;
             authentication.refreshCookie();
             identity.requestUserProfile().then(function () {
                 identity.getCurrentUser().then(function (user) {
