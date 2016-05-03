@@ -1,5 +1,5 @@
 <h1 class="color-container-title">Project Page</h1>
-<div id="project-name">
+<div id="project-name" class="col-sm-12 col-md-5 col-lg-5">
 <h1>{{projectKey}}</h1>
     <a href="#/projects/{{project.Id}}/edit"><button ng-show="showEdit" class="btn-primary">Edit</button></a>
     <a href="#/projects/{{project.Id}}/add-issue"><button class="btn-primary" ng-show="showAdd">Add Issue</button></a>
@@ -18,7 +18,7 @@
     <p><strong>Priorities: </strong>{{prioritites}}</p>
 </div>
 
-<div id="project-issues" class="panel panel-success">
+<div id="project-issues" class="panel panel-success col-sm-12 col-md-7 col-lg-7">
     <h3 class="color-container-title panel-heading">{{table_title}}</h3>
     <table class="table-responsive" id="project-table">
         <thead>
