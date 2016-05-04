@@ -17,7 +17,8 @@ th, td {
 tr:nth-child(even) {
     background-color: rgb(245, 245, 245);
 }
-h3 {
+h1, h2, h3 {
+    font-size: 1.655em;
     font-family: "Eras Demi ITC";
 }
 /* enable absolute positioning */
@@ -161,7 +162,6 @@ h3 {
     background-color: rgb(231, 231, 231);
     padding: 10px;
     border-radius: 5px;
-    font-size: 1.75em;
 }
 .color-container-title-caption {
     color: #00b3ee;
@@ -169,4 +169,7 @@ h3 {
 .project-image {
     display: inline-block;
     margin: 5px;
+}
+.center {
+    margin: 0 auto;
 }

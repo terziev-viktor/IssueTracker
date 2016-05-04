@@ -1,30 +1,32 @@
-<h1 class="color-container-title">Profile</h1>
-<div class="color-container-title">
-    <h2>{{user.Username}}</h2>
-    <span class="color-container-title-caption">[{{isAdmin}}]</span>
+<div>
+    <h1 class="color-container-title">Profile</h1>
+    <div class="color-container-title">
+        <h2>{{user.Username}}</h2>
+        <span class="color-container-title-caption">[{{isAdmin}}]</span>
+    </div>
+    <form class="frm-container-small">
+        <fieldset class="form-group">
+            <label for="pass">Old Password</label>
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-minus-sign"></span>
+                <input type="password" pattern=".{6,100}" class="form-control" id="pass" required ng-model="data.OldPassword">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="newPass">New Password</label>
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                <input type="password" pattern=".{6,100}" class="form-control" id="newPass" required ng-model="data.NewPassword">
+                <p>Password must contain 6 - 100 symbols.</p>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="confirmPass">Confirm New Password</label>
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                <input type="password" pattern=".{6,100}" class="form-control" id="confirmPass" required ng-model="data.ConfirmPassword">
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary" ng-click="changePass(data)">Change Password</button>
+    </form>
 </div>
-<form class="frm-container-small">
-    <fieldset class="form-group">
-        <label for="pass">Old Password</label>
-        <div class="inner-addon left-addon">
-            <span class="glyphicon glyphicon-minus-sign"></span>
-            <input type="password" pattern=".{6,100}" class="form-control" id="pass" required ng-model="data.OldPassword">
-        </div>
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="newPass">New Password</label>
-        <div class="inner-addon left-addon">
-            <span class="glyphicon glyphicon-plus-sign"></span>
-            <input type="password" pattern=".{6,100}" class="form-control" id="newPass" required ng-model="data.NewPassword">
-            <p>Password must contain 6 - 100 symbols.</p>
-        </div>
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="confirmPass">Confirm New Password</label>
-        <div class="inner-addon left-addon">
-            <span class="glyphicon glyphicon-plus-sign"></span>
-            <input type="password" pattern=".{6,100}" class="form-control" id="confirmPass" required ng-model="data.ConfirmPassword">
-        </div>
-    </fieldset>
-    <button type="submit" class="btn btn-primary" ng-click="changePass(data)">Change Password</button>
-</form>
