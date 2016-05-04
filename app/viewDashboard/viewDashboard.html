@@ -4,7 +4,7 @@
 <h2>Affiliated Projects</h2>
     <div class="inner-addon left-addon">
         <span class="glyphicon glyphicon-search"></span>
-        <input type="text" class="form-control" id="search-bar" placeholder="search for project" ng-model="search_value"/>
+        <input type="text" class="form-control" id="search-bar" placeholder="Search for project..." ng-model="search_value"/>
         <button class="btn-primary" id="btn-search-project" ng-click="searchProject()">Go</button>
     </div>
     <hr>
@@ -17,7 +17,7 @@
 </div>
 <div id="dashboard-second" class="col-sm-11 col-md-5 col-lg-5">
     <h3 class="color-container-title">Issues Assigned To Me</h3>
-    <table class="table-responsive" id="dashboard-table">
+    <table id="dashboard-table">
      <thead>
      <tr>
          <th>Title</th>
@@ -30,7 +30,7 @@
        <tr ng-repeat="issue in issues">
            <td><a href="#/issues/{{issue.Id}}">{{issue.Title}}</a></td>
            <td>{{issue.Description}}</td>
-          <td><a href="#/projects/{{issue.Project.Id}}">{{issue.Project.Name}}</a></td>
+           <td><a href="#/projects/{{issue.Project.Id}}">{{issue.Project.Name}}</a></td>
            <td>{{issue.DueDate}}</td>
        </tr>
        </tbody>
