@@ -154,6 +154,15 @@ h1, h2, h3 {
     padding: 10px;
     border-radius: 5px;
 }
+.colored-block {
+    display: block;
+    text-align: center;
+    font-family: "Eras Demi ITC";
+    margin: 20px auto;
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+    border-radius: 5px;
+}
 .color-container-title {
     width: 30%;
     text-align: center;
@@ -172,4 +181,5 @@ h1, h2, h3 {
 }
 .center {
     margin: 0 auto;
+    float: none;
 }
