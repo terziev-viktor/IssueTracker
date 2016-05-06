@@ -1,0 +1,27 @@
+<div class="col-sm-11 col-md-9 col-lg-9 center">
+    <h1 class="color-container-title">All Projects</h1>
+    <div class="inner-addon left-addon">
+        <span class="glyphicon glyphicon-search"></span>
+        <input type="text" class="form-control" id="search-bar" placeholder="Search for project..." ng-model="search_value"/>
+        <button class="btn-primary" id="btn-search-project" ng-click="searchProject()">Go</button>
+    </div>
+    <nav>
+        <ul class="pager">
+            <li><button class="btn-primary" ng-click="previousPage()">Previous Page</button></li>
+            <li><button class="btn-primary" ng-click="nextPage()">Next Page</button></li>
+        </ul>
+    </nav>
+    <hr>
+    <div ng-repeat="project in all_projects">
+        <img src="img/project-ico.gif" alt="ico.gif" width="20px" height="20px" class="project-image">
+        <a href="#/projects/{{project.Id}}"><h3 class="project-name">{{project.Name}}</h3></a><br>
+        <hr>
+    </div>
+    <h3>{{projectsFound}}</h3>
+    <nav>
+        <ul class="pager">
+            <li><button class="btn-primary" ng-click="previousPage()">Previous Page</button></li>
+            <li><button class="btn-primary" ng-click="nextPage()">Next Page</button></li>
+        </ul>
+    </nav>
+</div>

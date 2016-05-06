@@ -16,6 +16,7 @@ angular.module('IssueTracker', [
   'IssueTracker.users.profile',
   'IssueTracker.projects',
   'IssueTracker.projects.edit',
+  'IssueTracker.projects.all',
   'IssueTracker.projectPage',
   'IssueTracker.issues',
   'IssueTracker.issues.edit',
